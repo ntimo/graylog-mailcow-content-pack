@@ -1,7 +1,7 @@
 {
   "v": "1",
   "id": "e47c37bf-86ad-405f-80c1-5c26ef8464fe",
-  "rev": 10,
+  "rev": 11,
   "name": "mailcow",
   "summary": "This content pack will provide you with insights into your mailcow setup",
   "description": "",
@@ -12,62 +12,1127 @@
     {
       "v": "1",
       "type": {
-        "name": "stream",
+        "name": "dashboard",
         "version": "1"
       },
-      "id": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41",
+      "id": "2d69ba48-f2b8-4a05-84ce-4daff5d02cdf",
       "data": {
         "title": {
           "@type": "string",
-          "@value": "Mailcow"
+          "@value": "mailcow"
         },
         "description": {
           "@type": "string",
-          "@value": "RAW mailcow logs"
+          "@value": "mailcowdockerized stats from the past week"
         },
-        "disabled": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "matching_type": {
-          "@type": "string",
-          "@value": "AND"
-        },
-        "stream_rules": [
+        "widgets": [
           {
-            "type": {
+            "id": {
               "@type": "string",
-              "@value": "REGEX"
-            },
-            "field": {
-              "@type": "string",
-              "@value": "container_name"
-            },
-            "value": {
-              "@type": "string",
-              "@value": "mailcowdockerized.*"
-            },
-            "inverted": {
-              "@type": "boolean",
-              "@value": false
+              "@value": "c80ca5fb-5255-441c-a44c-c85aaa068170"
             },
             "description": {
               "@type": "string",
-              "@value": ""
+              "@value": "Netfilter: Block reasons of all tries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_rule_description"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 7
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "93c751ad-9caa-4500-850d-a10fdca377c1"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Non DANE connections"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 3
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "3bfd2c25-27f3-4e9a-85b3-bffe4079ae45"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Client hostnames"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_hostname"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 7
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "941f58dd-630a-4541-af65-e6a95e4ef49a"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Connecting countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "org.graylog.plugins.map.widget.strategy.MapWidgetStrategy"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_ip_geolocation"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 7
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "c6926542-e135-4d48-b8f5-f391f459ec61"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Rspamd: Messages per hour"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "SEARCH_RESULT_CHART"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "interval": {
+                "@type": "string",
+                "@value": "hour"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "de295522-176e-4190-afb7-ab40359c6836"
+              },
+              "query": {
+                "@type": "string",
+                "@value": "rspamd_task_write_log"
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 8
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 12
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "43ef70f8-435a-4ae2-bf98-1c01f382e650"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Netfilter: Blocked IPs"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": "netfilter_ban_time:*"
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_ip"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "a63c5a57-9a5c-4ce6-bd92-8cb32611f0a9"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: rejected messages"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "FIELD_CHART"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "renderer": {
+                "@type": "string",
+                "@value": "bar"
+              },
+              "interpolation": {
+                "@type": "string",
+                "@value": "linear"
+              },
+              "interval": {
+                "@type": "string",
+                "@value": "hour"
+              },
+              "query": {
+                "@type": "string",
+                "@value": "postfix_action:reject"
+              },
+              "valuetype": {
+                "@type": "string",
+                "@value": "count"
+              },
+              "relative": {
+                "@type": "integer",
+                "@value": 604800
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "rangeType": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_action"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 8
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 14
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "d315e40c-3552-4a8f-8f96-e5215f21b6ac"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: TLS version"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_tls_version"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "ccae56bf-d30b-4507-bcac-c38077494e5d"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Graylisted: outbound"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "e3b56813-3ce9-490e-8205-5e713b86296a"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Connecting countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_ip_geo_country_name"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 7
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "65208b3d-f259-4abb-99cb-22bec04d6c6f"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: TLS chipers"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_tls_cipher"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "42b48b61-99e2-483b-8793-14da392108f4"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Netfilter: Blocked countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": "netfilter_ban_time:*"
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_ip_geo_country_name"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "32d22eff-30b7-4095-b7e8-98d9363e6b70"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Blocked IPs"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "STREAM_SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "398a27b7-47f1-4eca-b842-cdd5b955b23c"
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "netfilter_ban_time:*"
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
             }
           }
-        ],
-        "alert_conditions": [],
-        "alarm_callbacks": [],
-        "outputs": [],
-        "default_stream": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "remove_matches": {
-          "@type": "boolean",
-          "@value": false
-        }
+        ]
       },
       "constraints": [
         {
@@ -104,34 +1169,6 @@
       "data": {
         "name": "POSTFIX_SMTPD_PROXY",
         "pattern": "proxy-%{POSTFIX_ACTION:postfix_proxy_result}: (%{POSTFIX_SMTP_STAGE:postfix_proxy_smtp_stage}): %{POSTFIX_PROXY_MESSAGE:postfix_proxy_message}; %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "ddb174e9-6869-4a97-a3bc-f582288a2920",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_5"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_5\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 5\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid Mailcow UI credentials\");\nend"
-        }
       },
       "constraints": [
         {
@@ -251,62 +1288,6 @@
     {
       "v": "1",
       "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "ab658118-9760-41f4-860d-599c77a58f93",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_details"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_details\"\nwhen\n  has_field(\"netfilter_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.netfilter_ip));\n  set_field(\"netfilter_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"netfilter_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"netfilter_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.netfilter_ip));\n  set_field(\"netfilter_ip_organisation\", whoice.single_value);\n\nend"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "a9504956-8d99-41b7-bfee-9cee5f4350d4",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_postfix_ip_details"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_postfix_ip_details\"\nwhen\n  has_field(\"postfix_client_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"postfix_client_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"postfix_client_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_organisation\", whoice.single_value);\n\nend"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -350,40 +1331,6 @@
       "data": {
         "name": "POSTFIX_PS_CONNECT",
         "pattern": "CONNECT from %{POSTFIX_CLIENT_INFO} to \\[%{IP:postfix_server_ip}\\]:%{INT:postfix_server_port}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline",
-        "version": "1"
-      },
-      "id": "b9f89868-f8d3-4454-a6bd-ba0ae1f12b0e",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Netfilter"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "Mailcow - Netfilter"
-        },
-        "source": {
-          "@type": "string",
-          "@value": "pipeline \"Mailcow - Netfilter\"\nstage 0 match either\nrule \"mailcow_netfilter_grok\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nend"
-        },
-        "connected_streams": [
-          {
-            "@type": "string",
-            "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
-          }
-        ]
       },
       "constraints": [
         {
@@ -539,34 +1486,6 @@
     {
       "v": "1",
       "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "cf6144e1-e445-4238-b72b-0a2b1f4f5487",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_2"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_2\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 2\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP auth failed\");\nend"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -585,73 +1504,6 @@
     {
       "v": "1",
       "type": {
-        "name": "stream",
-        "version": "1"
-      },
-      "id": "3ca623cc-eb44-4c93-90ec-4d03fc91ca97",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Dovecot"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "All logs from Mailcow Dovecot"
-        },
-        "disabled": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "matching_type": {
-          "@type": "string",
-          "@value": "AND"
-        },
-        "stream_rules": [
-          {
-            "type": {
-              "@type": "string",
-              "@value": "EXACT"
-            },
-            "field": {
-              "@type": "string",
-              "@value": "container_name"
-            },
-            "value": {
-              "@type": "string",
-              "@value": "mailcowdockerized_dovecot-mailcow_1"
-            },
-            "inverted": {
-              "@type": "boolean",
-              "@value": false
-            },
-            "description": {
-              "@type": "string",
-              "@value": ""
-            }
-          }
-        ],
-        "alert_conditions": [],
-        "alarm_callbacks": [],
-        "outputs": [],
-        "default_stream": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "remove_matches": {
-          "@type": "boolean",
-          "@value": false
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -659,1028 +1511,6 @@
       "data": {
         "name": "POSTFIX_TLSPROXY",
         "pattern": "%{POSTFIX_TLSPROXY_CONN}|%{POSTFIX_WARNING}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "dashboard",
-        "version": "1"
-      },
-      "id": "20329cca-d1da-4e04-a4fb-d86c546a12fd",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "mailcowdockerized stats from the past week"
-        },
-        "widgets": [
-          {
-            "id": {
-              "@type": "string",
-              "@value": "d315e40c-3552-4a8f-8f96-e5215f21b6ac"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Postfix: TLS version"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "postfix_tls_version"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 3
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "ccae56bf-d30b-4507-bcac-c38077494e5d"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Graylisted: outbound"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "SEARCH_RESULT_COUNT"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "lower_is_better": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "trend": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "query": {
-                "@type": "string",
-                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "c80ca5fb-5255-441c-a44c-c85aaa068170"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Netfilter: Reason"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "netfilter_rule_description"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 7
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "93c751ad-9caa-4500-850d-a10fdca377c1"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Non Dane connections"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "SEARCH_RESULT_COUNT"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "lower_is_better": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "trend": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "query": {
-                "@type": "string",
-                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 3
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "3bfd2c25-27f3-4e9a-85b3-bffe4079ae45"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Postfix: Client hostnames"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "postfix_client_hostname"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 7
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "e3b56813-3ce9-490e-8205-5e713b86296a"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Postfix: Connecting Countries"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "postfix_client_ip_geo_country_name"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 7
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 5
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "65208b3d-f259-4abb-99cb-22bec04d6c6f"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Postfix: TLS Chipers"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "postfix_tls_cipher"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 5
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "42b48b61-99e2-483b-8793-14da392108f4"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Netfilter - Country"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "netfilter_ip_geo_country_name"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 3
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "941f58dd-630a-4541-af65-e6a95e4ef49a"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Postfix: Connecting Countries"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "org.graylog.plugins.map.widget.strategy.MapWidgetStrategy"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "postfix_client_ip_geolocation"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 4
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 7
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "32d22eff-30b7-4095-b7e8-98d9363e6b70"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Banned IPs"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "STREAM_SEARCH_RESULT_COUNT"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "lower_is_better": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
-              },
-              "trend": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "query": {
-                "@type": "string",
-                "@value": "\"matched rule id\""
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 1
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 1
-              }
-            }
-          },
-          {
-            "id": {
-              "@type": "string",
-              "@value": "43ef70f8-435a-4ae2-bf98-1c01f382e650"
-            },
-            "description": {
-              "@type": "string",
-              "@value": "Netfilter - IP"
-            },
-            "type": {
-              "@type": "string",
-              "@value": "QUICKVALUES"
-            },
-            "cache_time": {
-              "@type": "integer",
-              "@value": 10
-            },
-            "time_range": {
-              "type": {
-                "@type": "string",
-                "@value": "relative"
-              },
-              "range": {
-                "@type": "integer",
-                "@value": 604800
-              }
-            },
-            "configuration": {
-              "timerange": {
-                "type": {
-                  "@type": "string",
-                  "@value": "relative"
-                },
-                "range": {
-                  "@type": "integer",
-                  "@value": 604800
-                }
-              },
-              "field": {
-                "@type": "string",
-                "@value": "netfilter_ip"
-              },
-              "stream_id": {
-                "@type": "string",
-                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
-              },
-              "query": {
-                "@type": "string",
-                "@value": ""
-              },
-              "show_data_table": {
-                "@type": "boolean",
-                "@value": true
-              },
-              "limit": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "show_pie_chart": {
-                "@type": "boolean",
-                "@value": false
-              },
-              "sort_order": {
-                "@type": "string",
-                "@value": "desc"
-              },
-              "stacked_fields": {
-                "@type": "string",
-                "@value": ""
-              },
-              "data_table_limit": {
-                "@type": "integer",
-                "@value": 50
-              }
-            },
-            "position": {
-              "width": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "height": {
-                "@type": "integer",
-                "@value": 2
-              },
-              "row": {
-                "@type": "integer",
-                "@value": 5
-              },
-              "col": {
-                "@type": "integer",
-                "@value": 5
-              }
-            }
-          }
-        ]
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "lookup_cache",
-        "version": "1"
-      },
-      "id": "7d7ec194-e687-40b1-a595-a6f1c0e08db8",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "geo-ip-city-maxmind-cache"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "Geo IP - City - MaxMind cache"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "configuration": {
-          "type": {
-            "@type": "string",
-            "@value": "guava_cache"
-          },
-          "max_size": {
-            "@type": "integer",
-            "@value": 10000
-          },
-          "expire_after_access": {
-            "@type": "long",
-            "@value": 0
-          },
-          "expire_after_access_unit": {
-            "@type": "string",
-            "@value": "MINUTES"
-          },
-          "expire_after_write": {
-            "@type": "long",
-            "@value": 6
-          },
-          "expire_after_write_unit": {
-            "@type": "string",
-            "@value": "HOURS"
-          }
-        }
       },
       "constraints": [
         {
@@ -1782,40 +1612,6 @@
     {
       "v": "1",
       "type": {
-        "name": "pipeline",
-        "version": "1"
-      },
-      "id": "ea513072-bc5b-4d09-93af-41a594f74fef",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Postfix"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "Mailcow - Postfix"
-        },
-        "source": {
-          "@type": "string",
-          "@value": "pipeline \"Mailcow - Postfix\"\nstage 0 match either\nrule \"mailcow_postfix\"\nstage 1 match either\nrule \"mailcow_postfix_ip_details\"\nend"
-        },
-        "connected_streams": [
-          {
-            "@type": "string",
-            "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
-          }
-        ]
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -1841,34 +1637,6 @@
       "data": {
         "name": "POSTFIX_SMTPD_PIPELINING",
         "pattern": "improper command pipelining after %{POSTFIX_SMTP_STAGE:postfix_smtp_stage} from %{POSTFIX_CLIENT_INFO}: %{GREEDYDATA:postfix_improper_pipelining_data}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "83df6dfb-3ca4-4c9d-930c-9a90791d6875",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_3"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_3\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 3\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP abort login\");\nend"
-        }
       },
       "constraints": [
         {
@@ -1934,58 +1702,6 @@
     {
       "v": "1",
       "type": {
-        "name": "lookup_table",
-        "version": "1"
-      },
-      "id": "39c1f456-9a0d-4095-9f9d-33d822f43bf0",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "geo-ip-city-maxmind-lookup"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "Geo IP - City - MaxMind Lookup"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "cache_name": {
-          "@type": "string",
-          "@value": "7d7ec194-e687-40b1-a595-a6f1c0e08db8"
-        },
-        "data_adapter_name": {
-          "@type": "string",
-          "@value": "f3f9e097-7677-40e5-9d43-22fdcf831be4"
-        },
-        "default_single_value": {
-          "@type": "string",
-          "@value": "0"
-        },
-        "default_single_value_type": {
-          "@type": "string",
-          "@value": "NULL"
-        },
-        "default_multi_value": {
-          "@type": "string",
-          "@value": ""
-        },
-        "default_multi_value_type": {
-          "@type": "string",
-          "@value": "NULL"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -2011,34 +1727,6 @@
       "data": {
         "name": "POSTFIX_DNSBLOG_LISTING",
         "pattern": "addr %{IP:postfix_client_ip} listed by domain %{HOSTNAME:postfix_dnsbl_domain} as %{IP:postfix_dnsbl_result}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "bdf2152f-3c45-42a3-b743-8db7c3e4c338",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_postfix"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_postfix\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_postfix-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\nend"
-        }
       },
       "constraints": [
         {
@@ -2140,73 +1828,6 @@
     {
       "v": "1",
       "type": {
-        "name": "stream",
-        "version": "1"
-      },
-      "id": "101c6710-1a36-4bc5-979e-8cc8a88d2395",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Rspamd"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "All log messages from mailcow rspamd"
-        },
-        "disabled": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "matching_type": {
-          "@type": "string",
-          "@value": "AND"
-        },
-        "stream_rules": [
-          {
-            "type": {
-              "@type": "string",
-              "@value": "EXACT"
-            },
-            "field": {
-              "@type": "string",
-              "@value": "container_name"
-            },
-            "value": {
-              "@type": "string",
-              "@value": "mailcowdockerized_rspamd-mailcow_1"
-            },
-            "inverted": {
-              "@type": "boolean",
-              "@value": false
-            },
-            "description": {
-              "@type": "string",
-              "@value": ""
-            }
-          }
-        ],
-        "alert_conditions": [],
-        "alarm_callbacks": [],
-        "outputs": [],
-        "default_stream": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "remove_matches": {
-          "@type": "boolean",
-          "@value": false
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -2286,62 +1907,6 @@
       "data": {
         "name": "POSTFIX_PS_NOQUEUE",
         "pattern": "%{POSTFIX_SMTPD_NOQUEUE}"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "fad3f731-1ee6-466a-bd85-011a519019f7",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_grok"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field);\nend"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "ce4ae4f7-efb1-40a6-9a57-4ccbb286b541",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_7"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_7\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 7\nthen\n  set_field(\"netfilter_rule_description\", \"Rspamd UI: Invalid password\");\nend"
-        }
       },
       "constraints": [
         {
@@ -2486,56 +2051,6 @@
       "data": {
         "name": "POSTFIX_QMGR_REMOVED",
         "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: removed"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "lookup_cache",
-        "version": "1"
-      },
-      "id": "394fb5e5-c5ed-457a-a39a-5871300982a6",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "whoice-cache"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "Whoice Cache"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "configuration": {
-          "type": {
-            "@type": "string",
-            "@value": "guava_cache"
-          },
-          "max_size": {
-            "@type": "integer",
-            "@value": 1000
-          },
-          "expire_after_access": {
-            "@type": "long",
-            "@value": 60
-          },
-          "expire_after_access_unit": {
-            "@type": "string",
-            "@value": "MINUTES"
-          },
-          "expire_after_write": {
-            "@type": "long",
-            "@value": 0
-          }
-        }
       },
       "constraints": [
         {
@@ -2799,34 +2314,6 @@
     {
       "v": "1",
       "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "860923c8-bdf0-4f2e-a294-849d7398551d",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_1"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_1\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 1\nthen\n  set_field(\"netfilter_rule_description\", \"SASL authentication failed\");\nend"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -2917,57 +2404,6 @@
     {
       "v": "1",
       "type": {
-        "name": "lookup_adapter",
-        "version": "1"
-      },
-      "id": "8558b874-7fa7-475a-a388-2c3d4ff8348f",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "ip-whoice"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "IP Whoice"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "configuration": {
-          "type": {
-            "@type": "string",
-            "@value": "whois"
-          },
-          "registry": {
-            "@type": "string",
-            "@value": "ARIN"
-          },
-          "connect_timeout": {
-            "@type": "integer",
-            "@value": 1000
-          },
-          "read_timeout": {
-            "@type": "integer",
-            "@value": 1000
-          }
-        }
-      },
-      "constraints": [
-        {
-          "type": "plugin-version",
-          "plugin": "org.graylog.plugins.threatintel.ThreatIntelPlugin",
-          "version": ">=3.1.3"
-        },
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -3011,56 +2447,6 @@
       "data": {
         "name": "POSTFIX_CLIENT_INFO",
         "pattern": "%{HOSTNAME:postfix_client_hostname}?\\[%{IP:postfix_client_ip}\\](:%{INT:postfix_client_port})?"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "lookup_adapter",
-        "version": "1"
-      },
-      "id": "f3f9e097-7677-40e5-9d43-22fdcf831be4",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "geo-ip-city-maxmind-adapater"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "Geo IP - City - MaxMind adapater"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "configuration": {
-          "type": {
-            "@type": "string",
-            "@value": "maxmind_geoip"
-          },
-          "path": {
-            "@type": "string",
-            "@value": "/usr/local/etc/graylog/GeoLite2-City.mmdb"
-          },
-          "database_type": {
-            "@type": "string",
-            "@value": "MAXMIND_CITY"
-          },
-          "check_interval": {
-            "@type": "long",
-            "@value": 1
-          },
-          "check_interval_unit": {
-            "@type": "string",
-            "@value": "DAYS"
-          }
-        }
       },
       "constraints": [
         {
@@ -3144,58 +2530,6 @@
     {
       "v": "1",
       "type": {
-        "name": "lookup_table",
-        "version": "1"
-      },
-      "id": "e462c1bb-c715-4db8-bbd4-59220b31bb46",
-      "data": {
-        "name": {
-          "@type": "string",
-          "@value": "ip-whoice"
-        },
-        "title": {
-          "@type": "string",
-          "@value": "IP Whoice"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "cache_name": {
-          "@type": "string",
-          "@value": "394fb5e5-c5ed-457a-a39a-5871300982a6"
-        },
-        "data_adapter_name": {
-          "@type": "string",
-          "@value": "8558b874-7fa7-475a-a388-2c3d4ff8348f"
-        },
-        "default_single_value": {
-          "@type": "string",
-          "@value": "Unknown"
-        },
-        "default_single_value_type": {
-          "@type": "string",
-          "@value": "STRING"
-        },
-        "default_multi_value": {
-          "@type": "string",
-          "@value": ""
-        },
-        "default_multi_value_type": {
-          "@type": "string",
-          "@value": "NULL"
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -3268,174 +2602,6 @@
     {
       "v": "1",
       "type": {
-        "name": "pipeline",
-        "version": "1"
-      },
-      "id": "9185313d-717b-435f-ba2c-f5bdb792aab5",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "pipeline \"Mailcow\"\nstage 0 match either\nrule \"mailcow_postfix\"\nrule \"mailcow_netfilter_grok\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nrule \"mailcow_postfix_ip_details\"\nend"
-        },
-        "connected_streams": [
-          {
-            "@type": "string",
-            "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
-          }
-        ]
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "stream",
-        "version": "1"
-      },
-      "id": "1b960220-5744-480a-9b18-e295011dd1a9",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Postfix"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "All logs from Mailcow Postfix"
-        },
-        "disabled": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "matching_type": {
-          "@type": "string",
-          "@value": "AND"
-        },
-        "stream_rules": [
-          {
-            "type": {
-              "@type": "string",
-              "@value": "EXACT"
-            },
-            "field": {
-              "@type": "string",
-              "@value": "container_name"
-            },
-            "value": {
-              "@type": "string",
-              "@value": "mailcowdockerized_postfix-mailcow_1"
-            },
-            "inverted": {
-              "@type": "boolean",
-              "@value": false
-            },
-            "description": {
-              "@type": "string",
-              "@value": ""
-            }
-          }
-        ],
-        "alert_conditions": [],
-        "alarm_callbacks": [],
-        "outputs": [],
-        "default_stream": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "remove_matches": {
-          "@type": "boolean",
-          "@value": false
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "stream",
-        "version": "1"
-      },
-      "id": "5c844b9a-0dc3-4862-a369-48bc9e4a171a",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "Mailcow - Netfilter"
-        },
-        "description": {
-          "@type": "string",
-          "@value": "All logs from Mailcow Netfilter"
-        },
-        "disabled": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "matching_type": {
-          "@type": "string",
-          "@value": "AND"
-        },
-        "stream_rules": [
-          {
-            "type": {
-              "@type": "string",
-              "@value": "EXACT"
-            },
-            "field": {
-              "@type": "string",
-              "@value": "container_name"
-            },
-            "value": {
-              "@type": "string",
-              "@value": "mailcowdockerized_netfilter-mailcow_1"
-            },
-            "inverted": {
-              "@type": "boolean",
-              "@value": false
-            },
-            "description": {
-              "@type": "string",
-              "@value": ""
-            }
-          }
-        ],
-        "alert_conditions": [],
-        "alarm_callbacks": [],
-        "outputs": [],
-        "default_stream": {
-          "@type": "boolean",
-          "@value": false
-        },
-        "remove_matches": {
-          "@type": "boolean",
-          "@value": false
-        }
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
         "name": "grok_pattern",
         "version": "1"
       },
@@ -3497,34 +2663,6 @@
       "data": {
         "name": "POSTFIX_SMTP_DELIVERY",
         "pattern": "%{POSTFIX_KEYVALUE} status=%{STATUS_WORD:postfix_status}( \\(%{GREEDYDATA:postfix_smtp_response}\\))?"
-      },
-      "constraints": [
-        {
-          "type": "server-version",
-          "version": ">=3.1.3+cda805f"
-        }
-      ]
-    },
-    {
-      "v": "1",
-      "type": {
-        "name": "pipeline_rule",
-        "version": "1"
-      },
-      "id": "f26817bc-3fb7-457d-a90c-f04004808f58",
-      "data": {
-        "title": {
-          "@type": "string",
-          "@value": "mailcow_netfilter_rule_details_4"
-        },
-        "description": {
-          "@type": "string",
-          "@value": ""
-        },
-        "source": {
-          "@type": "string",
-          "@value": "rule \"mailcow_netfilter_rule_details_4\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 4\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid SOGo login\");\nend"
-        }
       },
       "constraints": [
         {
@@ -3993,6 +3131,1322 @@
       "data": {
         "name": "SECOND",
         "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_adapter",
+        "version": "1"
+      },
+      "id": "8558b874-7fa7-475a-a388-2c3d4ff8348f",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "ip-whoice"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "IP Whoice"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "whois"
+          },
+          "registry": {
+            "@type": "string",
+            "@value": "ARIN"
+          },
+          "connect_timeout": {
+            "@type": "integer",
+            "@value": 1000
+          },
+          "read_timeout": {
+            "@type": "integer",
+            "@value": 1000
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "plugin-version",
+          "plugin": "org.graylog.plugins.threatintel.ThreatIntelPlugin",
+          "version": ">=3.1.3"
+        },
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_adapter",
+        "version": "1"
+      },
+      "id": "f3f9e097-7677-40e5-9d43-22fdcf831be4",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-adapater"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind adapater"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "maxmind_geoip"
+          },
+          "path": {
+            "@type": "string",
+            "@value": "/usr/local/etc/graylog/GeoLite2-City.mmdb"
+          },
+          "database_type": {
+            "@type": "string",
+            "@value": "MAXMIND_CITY"
+          },
+          "check_interval": {
+            "@type": "long",
+            "@value": 1
+          },
+          "check_interval_unit": {
+            "@type": "string",
+            "@value": "DAYS"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_cache",
+        "version": "1"
+      },
+      "id": "7d7ec194-e687-40b1-a595-a6f1c0e08db8",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-cache"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind cache"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "guava_cache"
+          },
+          "max_size": {
+            "@type": "integer",
+            "@value": 10000
+          },
+          "expire_after_access": {
+            "@type": "long",
+            "@value": 0
+          },
+          "expire_after_access_unit": {
+            "@type": "string",
+            "@value": "MINUTES"
+          },
+          "expire_after_write": {
+            "@type": "long",
+            "@value": 6
+          },
+          "expire_after_write_unit": {
+            "@type": "string",
+            "@value": "HOURS"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_cache",
+        "version": "1"
+      },
+      "id": "394fb5e5-c5ed-457a-a39a-5871300982a6",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "whoice-cache"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Whoice Cache"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "guava_cache"
+          },
+          "max_size": {
+            "@type": "integer",
+            "@value": 1000
+          },
+          "expire_after_access": {
+            "@type": "long",
+            "@value": 60
+          },
+          "expire_after_access_unit": {
+            "@type": "string",
+            "@value": "MINUTES"
+          },
+          "expire_after_write": {
+            "@type": "long",
+            "@value": 0
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_table",
+        "version": "1"
+      },
+      "id": "39c1f456-9a0d-4095-9f9d-33d822f43bf0",
+      "data": {
+        "default_single_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        },
+        "cache_name": {
+          "@type": "string",
+          "@value": "7d7ec194-e687-40b1-a595-a6f1c0e08db8"
+        },
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-lookup"
+        },
+        "default_multi_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        },
+        "default_multi_value": {
+          "@type": "string",
+          "@value": ""
+        },
+        "data_adapter_name": {
+          "@type": "string",
+          "@value": "f3f9e097-7677-40e5-9d43-22fdcf831be4"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind Lookup"
+        },
+        "default_single_value": {
+          "@type": "string",
+          "@value": "0"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_table",
+        "version": "1"
+      },
+      "id": "e462c1bb-c715-4db8-bbd4-59220b31bb46",
+      "data": {
+        "default_single_value_type": {
+          "@type": "string",
+          "@value": "STRING"
+        },
+        "cache_name": {
+          "@type": "string",
+          "@value": "394fb5e5-c5ed-457a-a39a-5871300982a6"
+        },
+        "name": {
+          "@type": "string",
+          "@value": "ip-whoice"
+        },
+        "default_multi_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        },
+        "default_multi_value": {
+          "@type": "string",
+          "@value": ""
+        },
+        "data_adapter_name": {
+          "@type": "string",
+          "@value": "8558b874-7fa7-475a-a388-2c3d4ff8348f"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "IP Whoice"
+        },
+        "default_single_value": {
+          "@type": "string",
+          "@value": "Unknown"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "b9f89868-f8d3-4454-a6bd-ba0ae1f12b0e",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow - Netfilter\"\nstage 0 match either\nrule \"mailcow_netfilter_grok\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "ea513072-bc5b-4d09-93af-41a594f74fef",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow - Postfix\"\nstage 0 match either\nrule \"mailcow_postfix\"\nstage 1 match either\nrule \"mailcow_postfix_ip_details\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "9185313d-717b-435f-ba2c-f5bdb792aab5",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow\"\nstage 0 match either\nrule \"mailcow_postfix\"\nrule \"mailcow_netfilter_grok\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nrule \"mailcow_postfix_ip_details\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ddb174e9-6869-4a97-a3bc-f582288a2920",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_5"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_5\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 5\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid Mailcow UI credentials\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ab658118-9760-41f4-860d-599c77a58f93",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_details\"\nwhen\n  has_field(\"netfilter_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.netfilter_ip));\n  set_field(\"netfilter_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"netfilter_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"netfilter_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.netfilter_ip));\n  set_field(\"netfilter_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "a9504956-8d99-41b7-bfee-9cee5f4350d4",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix_ip_details\"\nwhen\n  has_field(\"postfix_client_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"postfix_client_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"postfix_client_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "cf6144e1-e445-4238-b72b-0a2b1f4f5487",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_2"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_2\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 2\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP auth failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "83df6dfb-3ca4-4c9d-930c-9a90791d6875",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_3"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_3\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 3\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP abort login\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "bdf2152f-3c45-42a3-b743-8db7c3e4c338",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_postfix-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ce4ae4f7-efb1-40a6-9a57-4ccbb286b541",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_7"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_7\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 7\nthen\n  set_field(\"netfilter_rule_description\", \"Rspamd UI: Invalid password\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "860923c8-bdf0-4f2e-a294-849d7398551d",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_1"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_1\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 1\nthen\n  set_field(\"netfilter_rule_description\", \"SASL authentication failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "f26817bc-3fb7-457d-a90c-f04004808f58",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_4"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_4\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 4\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid SOGo login\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "3b9277a6-1b35-45dc-a0d9-a44c8e0523f7",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_grok"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n//  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\n  true\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_matched_rule = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  let parsed_field_banned = grok(pattern: \"Banning %{IP:netfilter_ip}/%{NUMBER} for %{NUMBER:netfilter_ban_time} minutes\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_matched_rule);\n  set_fields(parsed_field_banned);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "3ca623cc-eb44-4c93-90ec-4d03fc91ca97",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Dovecot"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_dovecot-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Dovecot"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "101c6710-1a36-4bc5-979e-8cc8a88d2395",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Rspamd"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_rspamd-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All log messages from mailcow rspamd"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "1b960220-5744-480a-9b18-e295011dd1a9",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_postfix-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Postfix"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "5c844b9a-0dc3-4862-a369-48bc9e4a171a",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_netfilter-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Netfilter"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_netfilter-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Netfilter"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "824a6565-c5b5-4a1e-b659-fca29c44ddfb",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_postfix-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Postfix"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "de295522-176e-4190-afb7-ab40359c6836",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Rspamd"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_rspamd-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All log messages from mailcow rspamd"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "398a27b7-47f1-4eca-b842-cdd5b955b23c",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_nginx-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": true
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
       },
       "constraints": [
         {
