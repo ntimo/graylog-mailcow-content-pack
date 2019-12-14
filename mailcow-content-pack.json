@@ -1,0 +1,4005 @@
+{
+  "v": "1",
+  "id": "e47c37bf-86ad-405f-80c1-5c26ef8464fe",
+  "rev": 10,
+  "name": "mailcow",
+  "summary": "This content pack will provide you with insights into your mailcow setup",
+  "description": "",
+  "vendor": "timo@nowitzki.me",
+  "url": "",
+  "parameters": [],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "alarm_callbacks": [],
+        "outputs": [],
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5750471e-ccb5-42b7-b0a9-061aabe7c5e6",
+      "data": {
+        "name": "POSTFIX_RELAY_INFO",
+        "pattern": "%{HOSTNAME:postfix_relay_hostname}?\\[(%{IP:postfix_relay_ip}|%{DATA:postfix_relay_service})\\](:%{INT:postfix_relay_port})?|%{WORD:postfix_relay_service}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "2b83ee50-340f-4ddd-b89f-4f6cc14c8524",
+      "data": {
+        "name": "POSTFIX_SMTPD_PROXY",
+        "pattern": "proxy-%{POSTFIX_ACTION:postfix_proxy_result}: (%{POSTFIX_SMTP_STAGE:postfix_proxy_smtp_stage}): %{POSTFIX_PROXY_MESSAGE:postfix_proxy_message}; %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ddb174e9-6869-4a97-a3bc-f582288a2920",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_5"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_5\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 5\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid Mailcow UI credentials\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "50ca43ad-f850-4590-a7af-22714a3f14cf",
+      "data": {
+        "name": "POSTFIX_MASTER",
+        "pattern": "%{POSTFIX_MASTER_START}|%{POSTFIX_MASTER_EXIT}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "dfd091ab-b3a1-4b89-bb96-d8e31337abb5",
+      "data": {
+        "name": "POSTFIX_WARNING_WITH_KV",
+        "pattern": "(%{POSTFIX_QUEUEID:postfix_queueid}: )?%{POSTFIX_WARNING_LEVEL:postfix_message_level}: (%{POSTFIX_CLIENT_INFO}: )?%{GREEDYDATA:postfix_message}; %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "86434777-70d1-44de-8356-b2f45dcf776c",
+      "data": {
+        "name": "POSTFIX_POSTSCREEN",
+        "pattern": "%{POSTFIX_PS_CONNECT}|%{POSTFIX_PS_ACCESS}|%{POSTFIX_PS_NOQUEUE}|%{POSTFIX_PS_TOOBUSY}|%{POSTFIX_PS_CACHE}|%{POSTFIX_PS_DNSBL}|%{POSTFIX_PS_VIOLATIONS}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6812aa7d-4be1-48cf-870d-d9ba02dac356",
+      "data": {
+        "name": "POSTFIX_PS_CACHE",
+        "pattern": "cache %{DATA} full cleanup: retained=%{NUMBER:postfix_postscreen_cache_retained} dropped=%{NUMBER:postfix_postscreen_cache_dropped} entries"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9935abea-dc1f-4b9b-8da5-731cd7bbc6f1",
+      "data": {
+        "name": "POSTFIX_MASTER_EXIT",
+        "pattern": "terminating on signal %{INT:postfix_termination_signal}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6c9e30f9-d13c-4b33-ba5d-2a8725bec966",
+      "data": {
+        "name": "POSTFIX_POSTSUPER_ACTION",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_POSTSUPER_ACTIONS:postfix_postsuper_action}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ab658118-9760-41f4-860d-599c77a58f93",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_details\"\nwhen\n  has_field(\"netfilter_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.netfilter_ip));\n  set_field(\"netfilter_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"netfilter_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"netfilter_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.netfilter_ip));\n  set_field(\"netfilter_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "a9504956-8d99-41b7-bfee-9cee5f4350d4",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix_ip_details\"\nwhen\n  has_field(\"postfix_client_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"postfix_client_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"postfix_client_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c0fdb206-79b9-475f-b351-eb2e65b9067e",
+      "data": {
+        "name": "POSTFIX_CLEANUP",
+        "pattern": "%{POSTFIX_CLEANUP_MILTER}|%{POSTFIX_WARNING}|%{POSTFIX_KEYVALUE}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ebd38fbb-b338-4f82-b1cf-21130ea1f8ab",
+      "data": {
+        "name": "POSTFIX_SMTP_TIMEOUT",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: conversation with %{POSTFIX_RELAY_INFO} timed out( while %{POSTFIX_LOSTCONN_REASONS:postfix_smtp_lostconn_reason})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "52b200b7-886c-4336-838e-ebfdfcc5b4b0",
+      "data": {
+        "name": "POSTFIX_PS_CONNECT",
+        "pattern": "CONNECT from %{POSTFIX_CLIENT_INFO} to \\[%{IP:postfix_server_ip}\\]:%{INT:postfix_server_port}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "b9f89868-f8d3-4454-a6bd-ba0ae1f12b0e",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow - Netfilter\"\nstage 0 match either\nrule \"mailcow_netfilter_grok\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "52ca3d8c-1546-4b2f-822c-811621a22c63",
+      "data": {
+        "name": "POSTFIX_ANVIL_CONN_CACHE",
+        "pattern": "statistics: max cache size %{NUMBER:postfix_anvil_cache_size} at %{SYSLOGTIMESTAMP:postfix_anvil_timestamp}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "389eaab2-8241-42e2-bffd-68fa8df36eca",
+      "data": {
+        "name": "POSTFIX_POSTDROP",
+        "pattern": "%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3d45d46e-b892-43e5-b4ac-20d1583bc941",
+      "data": {
+        "name": "POSTFIX_QMGR_ACTIVE",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data} \\(queue active\\)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "4b7443b0-b35d-461b-84ac-6e07a39e0b95",
+      "data": {
+        "name": "POSTFIX_SMTP",
+        "pattern": "%{POSTFIX_SMTP_DELIVERY}|%{POSTFIX_SMTP_CONNERR}|%{POSTFIX_SMTP_SSLCONNERR}|%{POSTFIX_SMTP_LOSTCONN}|%{POSTFIX_SMTP_TIMEOUT}|%{POSTFIX_SMTP_RELAYERR}|%{POSTFIX_TLSCONN}|%{POSTFIX_WARNING}|%{POSTFIX_SMTP_UTF8}|%{POSTFIX_TLSVERIFICATION}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "691241ca-94e6-46b4-914c-2fc35e24eb82",
+      "data": {
+        "name": "POSTFIX_WARNING_LEVEL",
+        "pattern": "(warning|fatal|info)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "62972f20-7f4a-4ce4-abc1-97bb7984fd9b",
+      "data": {
+        "name": "POSTFIX_VIRTUAL",
+        "pattern": "%{POSTFIX_SMTP_DELIVERY}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e21918d3-d087-4cd2-bd9f-258b8d7c6b7c",
+      "data": {
+        "name": "POSTFIX_TRIVIAL_REWRITE",
+        "pattern": "%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6cc579df-9348-4a49-8f5a-66fab45fef7b",
+      "data": {
+        "name": "POSTFIX_TIME_UNIT",
+        "pattern": "%{NUMBER}[smhd]"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "cf6144e1-e445-4238-b72b-0a2b1f4f5487",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_2"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_2\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 2\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP auth failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "fcbe75ec-29b9-4634-a040-8afdbfb15f4d",
+      "data": {
+        "name": "POSTFIX_POSTSUPER_ACTIONS",
+        "pattern": "(removed|requeued|placed on hold|released from hold)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "3ca623cc-eb44-4c93-90ec-4d03fc91ca97",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Dovecot"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Dovecot"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_dovecot-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "alarm_callbacks": [],
+        "outputs": [],
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "11c2d15d-79b0-43de-a87b-748b8650b7ca",
+      "data": {
+        "name": "POSTFIX_TLSPROXY",
+        "pattern": "%{POSTFIX_TLSPROXY_CONN}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "dashboard",
+        "version": "1"
+      },
+      "id": "20329cca-d1da-4e04-a4fb-d86c546a12fd",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "mailcowdockerized stats from the past week"
+        },
+        "widgets": [
+          {
+            "id": {
+              "@type": "string",
+              "@value": "d315e40c-3552-4a8f-8f96-e5215f21b6ac"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: TLS version"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_tls_version"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "ccae56bf-d30b-4507-bcac-c38077494e5d"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Graylisted: outbound"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "c80ca5fb-5255-441c-a44c-c85aaa068170"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Netfilter: Reason"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_rule_description"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 7
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "93c751ad-9caa-4500-850d-a10fdca377c1"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Non Dane connections"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 3
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "3bfd2c25-27f3-4e9a-85b3-bffe4079ae45"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Client hostnames"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_hostname"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 7
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "e3b56813-3ce9-490e-8205-5e713b86296a"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Connecting Countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_ip_geo_country_name"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 7
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "65208b3d-f259-4abb-99cb-22bec04d6c6f"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: TLS Chipers"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_tls_cipher"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "42b48b61-99e2-483b-8793-14da392108f4"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Netfilter - Country"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_ip_geo_country_name"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "941f58dd-630a-4541-af65-e6a95e4ef49a"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Postfix: Connecting Countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "org.graylog.plugins.map.widget.strategy.MapWidgetStrategy"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "postfix_client_ip_geolocation"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 4
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 7
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "32d22eff-30b7-4095-b7e8-98d9363e6b70"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Banned IPs"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "STREAM_SEARCH_RESULT_COUNT"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "lower_is_better": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
+              },
+              "trend": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "query": {
+                "@type": "string",
+                "@value": "\"matched rule id\""
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 1
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
+              "@value": "43ef70f8-435a-4ae2-bf98-1c01f382e650"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Netfilter - IP"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "field": {
+                "@type": "string",
+                "@value": "netfilter_ip"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "5c844b9a-0dc3-4862-a369-48bc9e4a171a"
+              },
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": false
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 5
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 5
+              }
+            }
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_cache",
+        "version": "1"
+      },
+      "id": "7d7ec194-e687-40b1-a595-a6f1c0e08db8",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-cache"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind cache"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "guava_cache"
+          },
+          "max_size": {
+            "@type": "integer",
+            "@value": 10000
+          },
+          "expire_after_access": {
+            "@type": "long",
+            "@value": 0
+          },
+          "expire_after_access_unit": {
+            "@type": "string",
+            "@value": "MINUTES"
+          },
+          "expire_after_write": {
+            "@type": "long",
+            "@value": 6
+          },
+          "expire_after_write_unit": {
+            "@type": "string",
+            "@value": "HOURS"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "1a840dd2-4dbd-4f64-b7e4-ecf389ee4f57",
+      "data": {
+        "name": "POSTFIX_BOUNCE_NOTIFICATION",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: sender (non-delivery|delivery status|delay) notification: %{POSTFIX_QUEUEID:postfix_bounce_queueid}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "76c62d25-6d6d-41c9-b272-cf367cad4f3f",
+      "data": {
+        "name": "POSTFIX_PS_ACCESS",
+        "pattern": "%{POSTFIX_PS_ACCESS_ACTION:postfix_postscreen_access} %{POSTFIX_CLIENT_INFO}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "46e28e0b-6d35-4ce6-b823-bbf251fc9df3",
+      "data": {
+        "name": "POSTFIX_DNSBLOG",
+        "pattern": "%{POSTFIX_DNSBLOG_LISTING}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "7cb119a1-c4e6-4bb1-a9e9-bb91d20e71dc",
+      "data": {
+        "name": "POSTFIX_LOSTCONN_REASONS",
+        "pattern": "(receiving the initial server greeting|sending message body|sending end of data -- message may be sent more than once)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "489ed2dd-247d-4726-8745-c40ecf289647",
+      "data": {
+        "name": "POSTFIX_DNSBL_MESSAGE",
+        "pattern": "Service unavailable; .* \\[%{GREEDYDATA:postfix_status_data}\\] %{GREEDYDATA:postfix_status_message};"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "ea513072-bc5b-4d09-93af-41a594f74fef",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow - Postfix\"\nstage 0 match either\nrule \"mailcow_postfix\"\nstage 1 match either\nrule \"mailcow_postfix_ip_details\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "1b960220-5744-480a-9b18-e295011dd1a9"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ef67ed29-b846-43fc-a265-4e17ba517b0a",
+      "data": {
+        "name": "POSTFIX_KEYVALUE",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "76e99760-e55a-4ef3-b6ac-dcd7b4f9496a",
+      "data": {
+        "name": "POSTFIX_SMTPD_PIPELINING",
+        "pattern": "improper command pipelining after %{POSTFIX_SMTP_STAGE:postfix_smtp_stage} from %{POSTFIX_CLIENT_INFO}: %{GREEDYDATA:postfix_improper_pipelining_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "83df6dfb-3ca4-4c9d-930c-9a90791d6875",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_3"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_3\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 3\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP abort login\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c4462477-26da-4a77-918e-46ed48987986",
+      "data": {
+        "name": "POSTFIX_WARNING_WITHOUT_KV",
+        "pattern": "(%{POSTFIX_QUEUEID:postfix_queueid}: )?%{POSTFIX_WARNING_LEVEL:postfix_message_level}: (%{POSTFIX_CLIENT_INFO}: )?%{GREEDYDATA:postfix_message}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "7f0f0ae1-7723-4285-a7ea-1befa060f489",
+      "data": {
+        "name": "POSTFIX_ANVIL",
+        "pattern": "%{POSTFIX_ANVIL_CONN_RATE}|%{POSTFIX_ANVIL_CONN_CACHE}|%{POSTFIX_ANVIL_CONN_COUNT}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "2740bb32-41f9-4068-83a5-e181f96f2175",
+      "data": {
+        "name": "POSTFIX_LOSTCONN",
+        "pattern": "(Connection timed out|No route to host|Connection refused|Network is unreachable|lost connection|timeout|SSL_accept error|-1)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_table",
+        "version": "1"
+      },
+      "id": "39c1f456-9a0d-4095-9f9d-33d822f43bf0",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-lookup"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind Lookup"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "cache_name": {
+          "@type": "string",
+          "@value": "7d7ec194-e687-40b1-a595-a6f1c0e08db8"
+        },
+        "data_adapter_name": {
+          "@type": "string",
+          "@value": "f3f9e097-7677-40e5-9d43-22fdcf831be4"
+        },
+        "default_single_value": {
+          "@type": "string",
+          "@value": "0"
+        },
+        "default_single_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        },
+        "default_multi_value": {
+          "@type": "string",
+          "@value": ""
+        },
+        "default_multi_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e45ee8ef-532a-43cb-9d2b-bc6e71bc1946",
+      "data": {
+        "name": "POSTFIX_ACTION",
+        "pattern": "(accept|defer|discard|filter|header-redirect|reject)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "db32d06d-ec81-48f8-8305-95e74ba28ef0",
+      "data": {
+        "name": "POSTFIX_DNSBLOG_LISTING",
+        "pattern": "addr %{IP:postfix_client_ip} listed by domain %{HOSTNAME:postfix_dnsbl_domain} as %{IP:postfix_dnsbl_result}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "bdf2152f-3c45-42a3-b743-8db7c3e4c338",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_postfix-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "51b1146a-55de-4694-bda1-3002f347e2fd",
+      "data": {
+        "name": "POSTFIX_SMTP_LOSTCONN",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_LOSTCONN:postfix_smtp_lostconn_data} with %{POSTFIX_RELAY_INFO}( while %{POSTFIX_LOSTCONN_REASONS:postfix_smtp_lostconn_reason})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "779b0133-0b32-4a05-96be-c415be084079",
+      "data": {
+        "name": "POSTFIX_SMTPD_NOQUEUE",
+        "pattern": "NOQUEUE: %{POSTFIX_ACTION:postfix_action}: %{POSTFIX_SMTP_STAGE:postfix_smtp_stage} from %{POSTFIX_CLIENT_INFO}:( %{POSTFIX_STATUS_CODE:postfix_status_code} %{POSTFIX_STATUS_CODE_ENHANCED:postfix_status_code_enhanced})?( <%{DATA:postfix_status_data}>:)? (%{POSTFIX_DNSBL_MESSAGE}|%{GREEDYDATA:postfix_status_message};) %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "2048984c-8f18-42e3-8a68-c52f18403f95",
+      "data": {
+        "name": "POSTFIX_SMTPD",
+        "pattern": "%{POSTFIX_SMTPD_CONNECT}|%{POSTFIX_SMTPD_DISCONNECT}|%{POSTFIX_SMTPD_LOSTCONN}|%{POSTFIX_SMTPD_NOQUEUE}|%{POSTFIX_SMTPD_PIPELINING}|%{POSTFIX_TLSCONN}|%{POSTFIX_WARNING}|%{POSTFIX_SMTPD_PROXY}|%{POSTFIX_KEYVALUE}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9edc16e6-f658-4494-ac2d-ca7b86bc0666",
+      "data": {
+        "name": "POSTFIX_QMGR_EXPIRED",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: from=<%{DATA:postfix_from}>, status=%{STATUS_WORD:postfix_status}, returned to sender"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c0d60912-a6f3-4a4e-a778-982682fa8554",
+      "data": {
+        "name": "POSTFIX_SCACHE",
+        "pattern": "%{POSTFIX_SCACHE_LOOKUPS}|%{POSTFIX_SCACHE_SIMULTANEOUS}|%{POSTFIX_SCACHE_TIMESTAMP}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "101c6710-1a36-4bc5-979e-8cc8a88d2395",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Rspamd"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All log messages from mailcow rspamd"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_rspamd-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "alarm_callbacks": [],
+        "outputs": [],
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ce740a91-39dd-47e5-8fe5-cb4b9e9c55a4",
+      "data": {
+        "name": "POSTFIX_SMTPD_LOSTCONN",
+        "pattern": "%{POSTFIX_LOSTCONN:postfix_smtpd_lostconn_data}( after %{POSTFIX_SMTP_STAGE:postfix_smtp_stage}( \\(%{INT} bytes\\))?)? from %{POSTFIX_CLIENT_INFO}(: %{GREEDYDATA:postfix_smtpd_lostconn_reason})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "70acaec1-9db3-4001-a7e3-ab1d64144bbb",
+      "data": {
+        "name": "POSTFIX_ERROR",
+        "pattern": "%{POSTFIX_ERROR_ANY}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c62cd4ee-a98a-43b7-a685-73deb251357f",
+      "data": {
+        "name": "POSTFIX_KEYVALUE_DATA",
+        "pattern": "[\\w-]+=[^;]*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ef3e844e-94e4-4942-a29a-359b6d17a24f",
+      "data": {
+        "name": "POSTFIX_PROXY_MESSAGE",
+        "pattern": "(%{POSTFIX_STATUS_CODE:postfix_proxy_status_code} )?(%{POSTFIX_STATUS_CODE_ENHANCED:postfix_proxy_status_code_enhanced})?.*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e0daf314-2205-4bb8-9c4a-3f25bc9828ad",
+      "data": {
+        "name": "POSTFIX_PS_NOQUEUE",
+        "pattern": "%{POSTFIX_SMTPD_NOQUEUE}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "fad3f731-1ee6-466a-bd85-011a519019f7",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_grok"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ce4ae4f7-efb1-40a6-9a57-4ccbb286b541",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_7"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_7\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 7\nthen\n  set_field(\"netfilter_rule_description\", \"Rspamd UI: Invalid password\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "7b3ee9f5-3cbc-475e-9560-fe2e3c90e123",
+      "data": {
+        "name": "POSTFIX_LMTP",
+        "pattern": "%{POSTFIX_SMTP}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "a53916de-1a98-4c64-af36-ebff8bb7afa5",
+      "data": {
+        "name": "POSTFIX_QMGR",
+        "pattern": "%{POSTFIX_QMGR_REMOVED}|%{POSTFIX_QMGR_ACTIVE}|%{POSTFIX_QMGR_EXPIRED}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e111169c-9b95-4d15-979f-13092d8d2190",
+      "data": {
+        "name": "POSTFIX_SMTP_RELAYERR",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: host %{POSTFIX_RELAY_INFO} said: %{GREEDYDATA:postfix_smtp_response} \\(in reply to %{POSTFIX_SMTP_STAGE:postfix_smtp_stage} command\\)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "cae207db-7268-4bca-93dd-3d21b781e10b",
+      "data": {
+        "name": "POSTFIX_LOCAL",
+        "pattern": "%{POSTFIX_KEYVALUE}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "75d5b505-8163-437e-a66f-10c71461606b",
+      "data": {
+        "name": "POSTFIX_PS_TOOBUSY",
+        "pattern": "NOQUEUE: reject: CONNECT from %{POSTFIX_CLIENT_INFO}: %{GREEDYDATA:postfix_postscreen_toobusy_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "7feffe03-9cb0-4153-975d-ea768aab9bf9",
+      "data": {
+        "name": "POSTFIX_SMTP_SSLCONNERR",
+        "pattern": "SSL_connect error to %{POSTFIX_RELAY_INFO}: %{POSTFIX_LOSTCONN:postfix_smtp_lostconn_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "f4ad46a0-145c-4194-8c69-f14157e61b7a",
+      "data": {
+        "name": "POSTFIX_ANVIL_CONN_COUNT",
+        "pattern": "statistics: max connection count %{NUMBER:postfix_anvil_conn_count} for \\(%{DATA:postfix_service}:%{IP:postfix_client_ip}\\) at %{SYSLOGTIMESTAMP:postfix_anvil_timestamp}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "0b7ffca3-74e8-4a18-a3f2-00a7afe6006d",
+      "data": {
+        "name": "POSTFIX_QMGR_REMOVED",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: removed"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_cache",
+        "version": "1"
+      },
+      "id": "394fb5e5-c5ed-457a-a39a-5871300982a6",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "whoice-cache"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Whoice Cache"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "guava_cache"
+          },
+          "max_size": {
+            "@type": "integer",
+            "@value": 1000
+          },
+          "expire_after_access": {
+            "@type": "long",
+            "@value": 60
+          },
+          "expire_after_access_unit": {
+            "@type": "string",
+            "@value": "MINUTES"
+          },
+          "expire_after_write": {
+            "@type": "long",
+            "@value": 0
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "0eda4655-2fce-4a03-ae3b-8425a0a1e9b5",
+      "data": {
+        "name": "POSTFIX_POSTSUPER_SUMMARY_ACTIONS",
+        "pattern": "(Deleted|Requeued|Placed on hold|Released from hold)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6039bfe3-b6f5-4f08-999d-0cd9023741d0",
+      "data": {
+        "name": "POSTFIX_PS_ACCESS_ACTION",
+        "pattern": "(DISCONNECT|BLACKLISTED|WHITELISTED|WHITELIST VETO|PASS NEW|PASS OLD)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "77d49a23-249d-4664-bdcc-b771bbf3d894",
+      "data": {
+        "name": "POSTFIX_QUEUEID",
+        "pattern": "([0-9A-F]{6,}|[0-9a-zA-Z]{12,})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "383d4798-2b05-45a0-a1c6-598a364720fa",
+      "data": {
+        "name": "POSTFIX_DELAYS",
+        "pattern": "%{NUMBER:postfix_delay_before_qmgr}/%{NUMBER:postfix_delay_in_qmgr}/%{NUMBER:postfix_delay_conn_setup}/%{NUMBER:postfix_delay_transmission}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c46d4a1d-6051-4e4c-8eef-62770948b9cf",
+      "data": {
+        "name": "POSTFIX_PICKUP",
+        "pattern": "%{POSTFIX_KEYVALUE}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "47c1556f-7c48-4edd-82ea-c61f4b05687a",
+      "data": {
+        "name": "POSTFIX_SCACHE_LOOKUPS",
+        "pattern": "statistics: (address|domain) lookup hits=%{INT:postfix_scache_hits} miss=%{INT:postfix_scache_miss} success=%{INT:postfix_scache_success}%"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "bf0298c9-2c9f-4bfe-9b12-ef076db694a9",
+      "data": {
+        "name": "POSTFIX_SMTP_STAGE",
+        "pattern": "(CONNECT|HELO|EHLO|STARTTLS|AUTH|MAIL( FROM)?|RCPT( TO)?|(end of )?DATA|RSET|UNKNOWN|END-OF-MESSAGE|VRFY|\\.)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ff838366-2c36-4dbc-9b46-786c167b860e",
+      "data": {
+        "name": "POSTFIX_DISCARD_ANY",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data} status=%{STATUS_WORD:postfix_status} %{GREEDYDATA}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "40b5b452-4822-4f54-818e-b46756b3a599",
+      "data": {
+        "name": "POSTFIX_MASTER_START",
+        "pattern": "(daemon started|reload) -- version %{DATA:postfix_version}, configuration %{PATH:postfix_config_path}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "d4b67a4b-03d7-4f51-9746-20ff3f947fe2",
+      "data": {
+        "name": "POSTFIX_PS_VIOLATIONS",
+        "pattern": "%{POSTFIX_PS_VIOLATION:postfix_postscreen_violation}( %{INT})?( after %{NUMBER:postfix_postscreen_violation_time})? from %{POSTFIX_CLIENT_INFO}(( after %{POSTFIX_SMTP_STAGE:postfix_smtp_stage})?(: %{GREEDYDATA:postfix_postscreen_data})?| in tests (after|before) SMTP handshake)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "84f8d602-c660-46d7-99a1-5c77865fbcc9",
+      "data": {
+        "name": "POSTFIX_WARNING",
+        "pattern": "%{POSTFIX_WARNING_WITH_KV}|%{POSTFIX_WARNING_WITHOUT_KV}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "23d83517-95d4-4e61-b601-7e3303b4f3e7",
+      "data": {
+        "name": "POSTFIX_STATUS_CODE",
+        "pattern": "\\d{3}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5eee5cab-8469-4c0e-a717-7b340c849ae2",
+      "data": {
+        "name": "POSTFIX_BOUNCE",
+        "pattern": "%{POSTFIX_BOUNCE_NOTIFICATION}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "f5a59e6e-08b8-44e0-a187-720d14a85d7e",
+      "data": {
+        "name": "POSTFIX_SMTP_UTF8",
+        "pattern": "host %{POSTFIX_RELAY_INFO} offers SMTPUTF8 support, but not 8BITMIME"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "860923c8-bdf0-4f2e-a294-849d7398551d",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_1"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_1\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 1\nthen\n  set_field(\"netfilter_rule_description\", \"SASL authentication failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "750d7cb3-39a1-420b-9918-5d7fa63ddf6e",
+      "data": {
+        "name": "POSTFIX_SMTP_CONNERR",
+        "pattern": "connect to %{POSTFIX_RELAY_INFO}: %{POSTFIX_LOSTCONN:postfix_smtp_lostconn_data}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "37c6caf2-e2d0-4f3e-9d4b-43314f71bf24",
+      "data": {
+        "name": "POSTFIX_SCACHE_TIMESTAMP",
+        "pattern": "statistics: start interval %{SYSLOGTIMESTAMP:postfix_scache_timestamp}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "4b7a1270-6a38-4770-98dc-244f469eba8f",
+      "data": {
+        "name": "POSTFIX_PS_DNSBL",
+        "pattern": "%{POSTFIX_PS_VIOLATION:postfix_postscreen_violation} rank %{INT:postfix_postscreen_dnsbl_rank} for %{POSTFIX_CLIENT_INFO}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ae9bba2b-b096-414b-9267-6971b75ecff8",
+      "data": {
+        "name": "POSTFIX_DISCARD",
+        "pattern": "%{POSTFIX_DISCARD_ANY}|%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "cb79ef9c-2c66-44b5-8d87-b771782a6073",
+      "data": {
+        "name": "POSTFIX_SMTPD_DISCONNECT",
+        "pattern": "disconnect from %{POSTFIX_CLIENT_INFO}( %{GREEDYDATA:postfix_command_counter_data})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_adapter",
+        "version": "1"
+      },
+      "id": "8558b874-7fa7-475a-a388-2c3d4ff8348f",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "ip-whoice"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "IP Whoice"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "whois"
+          },
+          "registry": {
+            "@type": "string",
+            "@value": "ARIN"
+          },
+          "connect_timeout": {
+            "@type": "integer",
+            "@value": 1000
+          },
+          "read_timeout": {
+            "@type": "integer",
+            "@value": 1000
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "plugin-version",
+          "plugin": "org.graylog.plugins.threatintel.ThreatIntelPlugin",
+          "version": ">=3.1.3"
+        },
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "76c957b4-cca5-472f-a7bc-e08f74b31ba1",
+      "data": {
+        "name": "POSTFIX_POSTSUPER",
+        "pattern": "%{POSTFIX_POSTSUPER_ACTION}|%{POSTFIX_POSTSUPER_SUMMARY}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "cd9a1b2d-5264-4966-914b-93869be6ece6",
+      "data": {
+        "name": "POSTFIX_TLSVERIFICATION",
+        "pattern": "certificate verification failed for %{POSTFIX_RELAY_INFO}: %{GREEDYDATA:postfix_tls_error}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e7250264-b9b9-4a17-9ef6-b1da1a24cdc7",
+      "data": {
+        "name": "POSTFIX_CLIENT_INFO",
+        "pattern": "%{HOSTNAME:postfix_client_hostname}?\\[%{IP:postfix_client_ip}\\](:%{INT:postfix_client_port})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_adapter",
+        "version": "1"
+      },
+      "id": "f3f9e097-7677-40e5-9d43-22fdcf831be4",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "geo-ip-city-maxmind-adapater"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Geo IP - City - MaxMind adapater"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "configuration": {
+          "type": {
+            "@type": "string",
+            "@value": "maxmind_geoip"
+          },
+          "path": {
+            "@type": "string",
+            "@value": "/usr/local/etc/graylog/GeoLite2-City.mmdb"
+          },
+          "database_type": {
+            "@type": "string",
+            "@value": "MAXMIND_CITY"
+          },
+          "check_interval": {
+            "@type": "long",
+            "@value": 1
+          },
+          "check_interval_unit": {
+            "@type": "string",
+            "@value": "DAYS"
+          }
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9bf1869b-8f4c-439d-9ca1-15f60ad68351",
+      "data": {
+        "name": "POSTFIX_PS_VIOLATION",
+        "pattern": "(BARE NEWLINE|COMMAND (TIME|COUNT|LENGTH) LIMIT|COMMAND PIPELINING|DNSBL|HANGUP|NON-SMTP COMMAND|PREGREET)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5468ad29-1ce4-4165-9690-39420833528b",
+      "data": {
+        "name": "POSTFIX_PIPE_ANY",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}, status=%{STATUS_WORD:postfix_status} \\(%{GREEDYDATA:postfix_pipe_response}\\)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "44e7037c-2cd3-482e-acc1-673125ef1cf7",
+      "data": {
+        "name": "POSTFIX_SCACHE_SIMULTANEOUS",
+        "pattern": "statistics: max simultaneous domains=%{INT:postfix_scache_domains} addresses=%{INT:postfix_scache_addresses} connection=%{INT:postfix_scache_connection}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9a4a0abc-6814-4357-982d-4fb90aa00bbe",
+      "data": {
+        "name": "POSTFIX_TLSPROXY_CONN",
+        "pattern": "(DIS)?CONNECT( from)? %{POSTFIX_CLIENT_INFO}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "lookup_table",
+        "version": "1"
+      },
+      "id": "e462c1bb-c715-4db8-bbd4-59220b31bb46",
+      "data": {
+        "name": {
+          "@type": "string",
+          "@value": "ip-whoice"
+        },
+        "title": {
+          "@type": "string",
+          "@value": "IP Whoice"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "cache_name": {
+          "@type": "string",
+          "@value": "394fb5e5-c5ed-457a-a39a-5871300982a6"
+        },
+        "data_adapter_name": {
+          "@type": "string",
+          "@value": "8558b874-7fa7-475a-a388-2c3d4ff8348f"
+        },
+        "default_single_value": {
+          "@type": "string",
+          "@value": "Unknown"
+        },
+        "default_single_value_type": {
+          "@type": "string",
+          "@value": "STRING"
+        },
+        "default_multi_value": {
+          "@type": "string",
+          "@value": ""
+        },
+        "default_multi_value_type": {
+          "@type": "string",
+          "@value": "NULL"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "0f6f16d1-6b03-41e7-ad58-9b8f328a927c",
+      "data": {
+        "name": "POSTFIX_TLSCONN",
+        "pattern": "(Anonymous|Trusted|Untrusted|Verified) TLS connection established (to %{POSTFIX_RELAY_INFO}|from %{POSTFIX_CLIENT_INFO}): %{DATA:postfix_tls_version} with cipher %{DATA:postfix_tls_cipher} \\(%{DATA:postfix_tls_cipher_size} bits\\)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5af48e0c-434c-4710-95e6-44169fc6dac6",
+      "data": {
+        "name": "POSTFIX_ERROR_ANY",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: %{POSTFIX_KEYVALUE_DATA:postfix_keyvalue_data}, status=%{STATUS_WORD:postfix_status} \\(%{GREEDYDATA:postfix_error_response}\\)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3c1e1af5-4f92-4d1f-b6cb-8076f3d2bcfb",
+      "data": {
+        "name": "POSTFIX_TLSMGR",
+        "pattern": "%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "af50ad1c-c29d-4341-8f4f-0ffdb44c9faf",
+      "data": {
+        "name": "POSTFIX_SMTPD_CONNECT",
+        "pattern": "connect from %{POSTFIX_CLIENT_INFO}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "9185313d-717b-435f-ba2c-f5bdb792aab5",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow\"\nstage 0 match either\nrule \"mailcow_postfix\"\nrule \"mailcow_netfilter_grok\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nrule \"mailcow_postfix_ip_details\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "1b960220-5744-480a-9b18-e295011dd1a9",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Postfix"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_postfix-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "alarm_callbacks": [],
+        "outputs": [],
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "5c844b9a-0dc3-4862-a369-48bc9e4a171a",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Netfilter"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_netfilter-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "alarm_callbacks": [],
+        "outputs": [],
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "1bbc79cb-9574-4440-a28c-45ee40085220",
+      "data": {
+        "name": "POSTFIX_STATUS_CODE_ENHANCED",
+        "pattern": "\\d\\.\\d\\.\\d"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "b07bdef5-2e39-43fd-a90c-1744d56a6f3e",
+      "data": {
+        "name": "POSTFIX_CLEANUP_MILTER",
+        "pattern": "%{POSTFIX_QUEUEID:postfix_queueid}: milter-%{POSTFIX_ACTION:postfix_milter_result}: %{GREEDYDATA:postfix_milter_message}; %{GREEDYDATA_NO_COLON:postfix_keyvalue_data}(: %{GREEDYDATA:postfix_milter_data})?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ad1eba98-55d8-4368-81c2-002f4b15c006",
+      "data": {
+        "name": "POSTFIX_POSTSUPER_SUMMARY",
+        "pattern": "%{POSTFIX_POSTSUPER_SUMMARY_ACTIONS:postfix_postsuper_summary_action}: %{NUMBER:postfix_postsuper_summary_count} messages?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "26be928f-49ae-44ae-a695-d7884a3a071c",
+      "data": {
+        "name": "POSTFIX_SMTP_DELIVERY",
+        "pattern": "%{POSTFIX_KEYVALUE} status=%{STATUS_WORD:postfix_status}( \\(%{GREEDYDATA:postfix_smtp_response}\\))?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "f26817bc-3fb7-457d-a90c-f04004808f58",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_4"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_4\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 4\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid SOGo login\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "62cb887c-8e47-4ac3-9c57-8e40fd89275d",
+      "data": {
+        "name": "POSTFIX_ANVIL_CONN_RATE",
+        "pattern": "statistics: max connection rate %{NUMBER:postfix_anvil_conn_rate}/%{POSTFIX_TIME_UNIT:postfix_anvil_conn_period} for \\(%{DATA:postfix_service}:%{IP:postfix_client_ip}\\) at %{SYSLOGTIMESTAMP:postfix_anvil_timestamp}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3b843042-648e-4246-bb38-192d41e90294",
+      "data": {
+        "name": "POSTFIX_SENDMAIL",
+        "pattern": "%{POSTFIX_WARNING}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "d0eae196-de09-4975-a5a8-0d6bdb3cd785",
+      "data": {
+        "name": "POSTFIX_COMMAND_COUNTER_DATA",
+        "pattern": "(helo=(%{INT:postfix_cmd_helo_accepted}/)?%{INT:postfix_cmd_helo} )?(ehlo=(%{INT:postfix_cmd_ehlo_accepted}/)?%{INT:postfix_cmd_ehlo} )?(starttls=(%{INT:postfix_cmd_starttls_accepted}/)?%{INT:postfix_cmd_starttls} )?(auth=(%{INT:postfix_cmd_auth_accepted}/)?%{INT:postfix_cmd_auth} )?(mail=(%{INT:postfix_cmd_mail_accepted}/)?%{INT:postfix_cmd_mail} )?(rcpt=(%{INT:postfix_cmd_rcpt_accepted}/)?%{INT:postfix_cmd_rcpt} )?(data=(%{INT:postfix_cmd_data_accepted}/)?%{INT:postfix_cmd_data} )?(rset=(%{INT:postfix_cmd_rset_accepted}/)?%{INT:postfix_cmd_rset} )?(quit=(%{INT:postfix_cmd_quit_accepted}/)?%{INT:postfix_cmd_quit} )?(unknown=(%{INT:postfix_cmd_unknown_accepted}/)?%{INT:postfix_cmd_unknown} )?commands=(%{INT:postfix_cmd_count_accepted}/)?%{INT:postfix_cmd_count}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "210da067-2c57-4173-8736-9a34e7e5077e",
+      "data": {
+        "name": "POSTFIX_PIPE",
+        "pattern": "%{POSTFIX_PIPE_ANY}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "570e1dee-428e-4186-aa99-3a1593adb6a3",
+      "data": {
+        "name": "WORD",
+        "pattern": "\\b\\w+\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e7403f3e-ebf6-4d8d-9916-45810c0738bb",
+      "data": {
+        "name": "HOSTNAME",
+        "pattern": "\\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\\.?|\\b)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ecd4297a-2525-40fb-aa1c-93ef1939645c",
+      "data": {
+        "name": "DATA",
+        "pattern": ".*?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "d79dd418-6901-4b23-8b7d-09a159870c76",
+      "data": {
+        "name": "IP",
+        "pattern": "(?:%{IPV6}|%{IPV4})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "b79972a0-6a5e-41c1-b530-403129d7b394",
+      "data": {
+        "name": "INT",
+        "pattern": "(?:[+-]?(?:[0-9]+))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "77da673f-a009-4699-8792-6d2303804116",
+      "data": {
+        "name": "GREEDYDATA",
+        "pattern": ".*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5bb1a4a7-b52d-4458-bf2a-f3dbd1605a45",
+      "data": {
+        "name": "NUMBER",
+        "pattern": "(?:%{BASE10NUM})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c8fcc601-e113-4e0c-a199-227032fd733d",
+      "data": {
+        "name": "SYSLOGTIMESTAMP",
+        "pattern": "%{MONTH} +%{MONTHDAY} %{TIME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "f7a6c75a-f1ee-4798-93d0-927f29ecb57d",
+      "data": {
+        "name": "STATUS_WORD",
+        "pattern": "[\\w-]*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3a421ab0-a640-4aee-bdd2-93afeb190493",
+      "data": {
+        "name": "PATH",
+        "pattern": "(?:%{UNIXPATH}|%{WINPATH})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "488f9994-4dab-4ec2-bab5-71f1c68a416f",
+      "data": {
+        "name": "GREEDYDATA_NO_COLON",
+        "pattern": "[^:]*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6cde0c51-a397-4cbd-bc2e-c2f41d9c5a22",
+      "data": {
+        "name": "IPV6",
+        "pattern": "((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "a0167136-4267-4e9b-81d8-e66a764c4a36",
+      "data": {
+        "name": "IPV4",
+        "pattern": "(?<![0-9])(?:(?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]))(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9e85da05-73bc-433a-9aaa-e6f123026d99",
+      "data": {
+        "name": "BASE10NUM",
+        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "dce5ef21-7253-4a96-b67f-d7879efbe3e6",
+      "data": {
+        "name": "MONTH",
+        "pattern": "\\b(?:Jan(?:uary|uar)?|Feb(?:ruary|ruar)?|M(?:a|ä)?r(?:ch|z)?|Apr(?:il)?|Ma(?:y|i)?|Jun(?:e|i)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|O(?:c|k)?t(?:ober)?|Nov(?:ember)?|De(?:c|z)(?:ember)?)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e54ee8f0-da4d-475d-a57d-b2abed9212e6",
+      "data": {
+        "name": "TIME",
+        "pattern": "(?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "fbd1a537-932c-4a3e-8ed0-89c05f9c1acb",
+      "data": {
+        "name": "MONTHDAY",
+        "pattern": "(?:(?:0[1-9])|(?:[12][0-9])|(?:3[01])|[1-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "b1edaeab-76a3-47b1-999e-6c45d4515298",
+      "data": {
+        "name": "WINPATH",
+        "pattern": "(?>[A-Za-z]+:|\\\\)(?:\\\\[^\\\\?*]*)+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6710cef6-7a68-4008-8d68-2ba8629ea168",
+      "data": {
+        "name": "UNIXPATH",
+        "pattern": "(/([\\w_%!$@:.,~-]+|\\\\.)*)+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "64778eb0-ed3a-43cc-946f-41e5b0891b09",
+      "data": {
+        "name": "HOUR",
+        "pattern": "(?:2[0123]|[01]?[0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3137d465-d224-4494-89cc-296358af82f7",
+      "data": {
+        "name": "MINUTE",
+        "pattern": "(?:[0-5][0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ed903ea6-aac9-4136-bb95-fe8279749d7b",
+      "data": {
+        "name": "SECOND",
+        "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    }
+  ]
+}
