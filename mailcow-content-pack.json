@@ -1,12 +1,12 @@
 {
   "v": "1",
   "id": "e47c37bf-86ad-405f-80c1-5c26ef8464fe",
-  "rev": 11,
+  "rev": 12,
   "name": "mailcow",
-  "summary": "This content pack will provide you with insights into your mailcow setup",
+  "summary": "This content pack will provide you with insights into your mailcow dockerized setup",
   "description": "",
   "vendor": "timo@nowitzki.me",
-  "url": "",
+  "url": "https://github.com/ntimo/graylog-mailcow-content-pack",
   "parameters": [],
   "entities": [
     {
@@ -15,7 +15,7 @@
         "name": "dashboard",
         "version": "1"
       },
-      "id": "2d69ba48-f2b8-4a05-84ce-4daff5d02cdf",
+      "id": "d1607e7b-f614-4a53-aeed-c662e2197687",
       "data": {
         "title": {
           "@type": "string",
@@ -23,7 +23,7 @@
         },
         "description": {
           "@type": "string",
-          "@value": "mailcowdockerized stats from the past week"
+          "@value": "mailcow: dockerized stats from the past week"
         },
         "widgets": [
           {
@@ -90,7 +90,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -254,7 +254,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -328,7 +328,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               },
               "query": {
                 "@type": "string",
@@ -398,7 +398,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "de295522-176e-4190-afb7-ab40359c6836"
+                "@value": "b9262d3e-98a2-4b8d-ab54-c68fbbc15498"
               },
               "query": {
                 "@type": "string",
@@ -488,7 +488,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -590,7 +590,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               }
             },
             "position": {
@@ -676,7 +676,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -840,7 +840,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -934,7 +934,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "824a6565-c5b5-4a1e-b659-fca29c44ddfb"
+                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -1028,7 +1028,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "6c6e1c68-29eb-443b-80c9-b5cf027a20d6"
+                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -1102,7 +1102,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "398a27b7-47f1-4eca-b842-cdd5b955b23c"
+                "@value": "8f308b56-8286-408a-84f4-cebf87c0b650"
               },
               "trend": {
                 "@type": "boolean",
@@ -4373,6 +4373,296 @@
         "version": "1"
       },
       "id": "398a27b7-47f1-4eca-b842-cdd5b955b23c",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_nginx-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": true
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_netfilter-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Netfilter"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "261c5e4c-dd06-406d-bf3e-f49e0533810d",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_postfix-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Postfix"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "b9262d3e-98a2-4b8d-ab54-c68fbbc15498",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Rspamd"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_rspamd-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All log messages from mailcow rspamd"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "8f308b56-8286-408a-84f4-cebf87c0b650",
       "data": {
         "alarm_callbacks": [],
         "outputs": [],
