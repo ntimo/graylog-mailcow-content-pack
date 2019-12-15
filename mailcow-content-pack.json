@@ -23,7 +23,7 @@
         },
         "description": {
           "@type": "string",
-          "@value": "mailcowdockerized stats from the past week"
+          "@value": "mailcow: dockerized stats from the past week"
         },
         "widgets": [
           {
