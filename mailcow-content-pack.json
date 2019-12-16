@@ -1,7 +1,7 @@
 {
   "v": "1",
   "id": "e47c37bf-86ad-405f-80c1-5c26ef8464fe",
-  "rev": 12,
+  "rev": 14,
   "name": "mailcow",
   "summary": "This content pack will provide you with insights into your mailcow dockerized setup",
   "description": "",
@@ -15,7 +15,7 @@
         "name": "dashboard",
         "version": "1"
       },
-      "id": "d1607e7b-f614-4a53-aeed-c662e2197687",
+      "id": "d659e003-09d2-4c8e-bd11-840881499d51",
       "data": {
         "title": {
           "@type": "string",
@@ -90,7 +90,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
+                "@value": "197808d0-216f-4973-bd67-254dd51cf163"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -193,6 +193,100 @@
           {
             "id": {
               "@type": "string",
+              "@value": "78bbf910-5e99-4310-979b-9c5c999cfa90"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Dovecot: Top user"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "dovecot_user"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "94045498-65b4-4162-af3b-aeb1221562b0"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 16
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 1
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
               "@value": "3bfd2c25-27f3-4e9a-85b3-bffe4079ae45"
             },
             "description": {
@@ -254,7 +348,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -328,7 +422,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               },
               "query": {
                 "@type": "string",
@@ -398,7 +492,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "b9262d3e-98a2-4b8d-ab54-c68fbbc15498"
+                "@value": "2f9924a1-4b36-41c6-9ae7-3c692fb347ac"
               },
               "query": {
                 "@type": "string",
@@ -488,7 +582,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
+                "@value": "197808d0-216f-4973-bd67-254dd51cf163"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -590,7 +684,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               }
             },
             "position": {
@@ -676,7 +770,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -779,6 +873,100 @@
           {
             "id": {
               "@type": "string",
+              "@value": "ca5f8c46-19f8-4f63-bd39-f5f69a759327"
+            },
+            "description": {
+              "@type": "string",
+              "@value": "Dovecot: User countries"
+            },
+            "type": {
+              "@type": "string",
+              "@value": "QUICKVALUES"
+            },
+            "cache_time": {
+              "@type": "integer",
+              "@value": 10
+            },
+            "time_range": {
+              "type": {
+                "@type": "string",
+                "@value": "relative"
+              },
+              "range": {
+                "@type": "integer",
+                "@value": 604800
+              }
+            },
+            "configuration": {
+              "query": {
+                "@type": "string",
+                "@value": ""
+              },
+              "show_pie_chart": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "sort_order": {
+                "@type": "string",
+                "@value": "desc"
+              },
+              "timerange": {
+                "type": {
+                  "@type": "string",
+                  "@value": "relative"
+                },
+                "range": {
+                  "@type": "integer",
+                  "@value": 604800
+                }
+              },
+              "stacked_fields": {
+                "@type": "string",
+                "@value": ""
+              },
+              "data_table_limit": {
+                "@type": "integer",
+                "@value": 50
+              },
+              "field": {
+                "@type": "string",
+                "@value": "dovecot_rip_geo_country_name"
+              },
+              "stream_id": {
+                "@type": "string",
+                "@value": "94045498-65b4-4162-af3b-aeb1221562b0"
+              },
+              "show_data_table": {
+                "@type": "boolean",
+                "@value": true
+              },
+              "limit": {
+                "@type": "integer",
+                "@value": 5
+              }
+            },
+            "position": {
+              "width": {
+                "@type": "integer",
+                "@value": 2
+              },
+              "height": {
+                "@type": "integer",
+                "@value": 6
+              },
+              "row": {
+                "@type": "integer",
+                "@value": 16
+              },
+              "col": {
+                "@type": "integer",
+                "@value": 3
+              }
+            }
+          },
+          {
+            "id": {
+              "@type": "string",
               "@value": "e3b56813-3ce9-490e-8205-5e713b86296a"
             },
             "description": {
@@ -840,7 +1028,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -934,7 +1122,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "261c5e4c-dd06-406d-bf3e-f49e0533810d"
+                "@value": "7722d3f0-343f-438e-8620-998ee46c8de5"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -1028,7 +1216,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "039062d2-6c4f-4ef9-97b5-daf0a6b4bf7f"
+                "@value": "197808d0-216f-4973-bd67-254dd51cf163"
               },
               "show_data_table": {
                 "@type": "boolean",
@@ -1102,7 +1290,7 @@
               },
               "stream_id": {
                 "@type": "string",
-                "@value": "8f308b56-8286-408a-84f4-cebf87c0b650"
+                "@value": "2b8ef5eb-30d1-4d07-b4ee-ffd5a38cd705"
               },
               "trend": {
                 "@type": "boolean",
@@ -3142,6 +3330,600 @@
     {
       "v": "1",
       "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8914f46a-e106-42d8-a3ac-7eafcfc760fb",
+      "data": {
+        "name": "DOVECOT_LOGIN",
+        "pattern": "%{DOVECOT_TIME} %{WORD} dovecot: %{WORD:dovecot_proto}-login: %{DATA:dovecot_status_message}: user=<(%{EMAILADDRESS:dovecot_user})?>, (method=%{DATA:dovecot_method}, )?rip=%{IP:dovecot_rip}, lip=%{IP:dovecot_lip}, (mpid=%{DATA:dovecot_mpid}, )?%{GREEDYDATA:dovecot_method2}\n"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "16274b93-6f0c-4b0d-a25a-04a73976ab16",
+      "data": {
+        "name": "DOVECOT_LOGOUT_2",
+        "pattern": "%{DOVECOT_TIME} %{WORD} %{WORD}: %{WORD:dovecot_proto}\\(%{EMAILADDRESS:dovecot_user}\\)<%{NUMBER}><%{DATA}>: %{DATA:dovecot_status_message} in=%{NUMBER:dovecot_logout_in;double} out=%{NUMBER:dovecot_logout_out;double} deleted=%{NUMBER:dovecot_logout_deleted;double} expunged=%{NUMBER:dovecot_logout_expunged;double} trashed=%{NUMBER:dovecot_logout_trashed;double} hdr_count=%{NUMBER:dovecot_logout_hdr_count;double} hdr_bytes=%{NUMBER:dovecot_logout_hdr_bytes;double} body_count=%{NUMBER:dovecot_logout_body_count;double} body_bytes=%{NUMBER:dovecot_logout_body_bytes;double}\n"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "c89cbb00-4cf9-40b7-ba87-b9ba46456035",
+      "data": {
+        "name": "DOVECOT_LOGOUT_1",
+        "pattern": "%{SYSLOGBASE} %{WORD:proto}\\(%{LOGIN:user}\\): session=%{DATA:session} %{DATA:status_message} in=%{NONNEGINT:in} out=%{NONNEGINT:out}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "2729162e-a37b-48eb-acb9-ba5f660f2bd4",
+      "data": {
+        "name": "DOVECOT_LOGOUT",
+        "pattern": "(%{DOVECOT_LOGOUT_2})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "0059a6e2-dd29-43de-a982-db8c6b9d94c2",
+      "data": {
+        "name": "DOVECOT_TIME",
+        "pattern": "%{WORD} %{NUMBER} %{TIME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "306486bf-f1fd-4182-bd07-b6c4dc296e2b",
+      "data": {
+        "name": "DOVECOT",
+        "pattern": "(%{DOVECOT_LOGIN}|%{DOVECOT_LOGOUT})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "0ec78c37-eb8a-4282-b5da-73d679931e7a",
+      "data": {
+        "name": "WORD",
+        "pattern": "\\b\\w+\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8d717af8-f242-4f06-a834-428b3ee89498",
+      "data": {
+        "name": "GREEDYDATA",
+        "pattern": ".*"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "f8024c0f-c1b3-41d0-a5a0-b1f169286300",
+      "data": {
+        "name": "DATA",
+        "pattern": ".*?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "101aaf18-c638-44cf-a539-0d462f7b8a20",
+      "data": {
+        "name": "IP",
+        "pattern": "(?:%{IPV6}|%{IPV4})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "df2cf5f6-e2a4-4bf9-a2c4-28b9aae719aa",
+      "data": {
+        "name": "EMAILADDRESS",
+        "pattern": "%{EMAILLOCALPART}@%{HOSTNAME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "6394382c-2956-4c00-ad56-44dc0a725088",
+      "data": {
+        "name": "NUMBER",
+        "pattern": "(?:%{BASE10NUM})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8ae51c76-a70c-4cdd-b8e1-7a95d67e9649",
+      "data": {
+        "name": "SYSLOGBASE",
+        "pattern": "%{SYSLOGTIMESTAMP:timestamp} (?:%{SYSLOGFACILITY} )?%{SYSLOGHOST:logsource} %{SYSLOGPROG}:"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e42f35f7-95ff-46de-a5d7-aa6e50da1daa",
+      "data": {
+        "name": "NONNEGINT",
+        "pattern": "\\b(?:[0-9]+)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "2e990ec1-ed71-4dd8-bd01-5a83af6d0dba",
+      "data": {
+        "name": "LOGIN",
+        "pattern": "[.a-zA-Z0-9_-]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8ee0096e-cb6e-43e2-84a4-d48d0f8da802",
+      "data": {
+        "name": "TIME",
+        "pattern": "(?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "32d61f72-40d6-47d2-9379-9fd05a28b6be",
+      "data": {
+        "name": "IPV6",
+        "pattern": "((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "61a7bb04-6cd0-4762-849d-56cfc6f48315",
+      "data": {
+        "name": "IPV4",
+        "pattern": "(?<![0-9])(?:(?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5])[.](?:[0-1]?[0-9]{1,2}|2[0-4][0-9]|25[0-5]))(?![0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "3885497e-8604-44b7-940d-937ef9583961",
+      "data": {
+        "name": "HOSTNAME",
+        "pattern": "\\b(?:[0-9A-Za-z][0-9A-Za-z-]{0,62})(?:\\.(?:[0-9A-Za-z][0-9A-Za-z-]{0,62}))*(\\.?|\\b)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "098494ce-7fe0-4df2-bbb9-4ab12562fbd4",
+      "data": {
+        "name": "EMAILLOCALPART",
+        "pattern": "[a-zA-Z][a-zA-Z0-9_.+-=:]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9103adf6-b651-4049-91df-a98a46c2ef2e",
+      "data": {
+        "name": "BASE10NUM",
+        "pattern": "(?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\\.[0-9]+)?)|(?:\\.[0-9]+)))"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9904b3f8-d2e4-470a-88fc-d3a4c99f16ad",
+      "data": {
+        "name": "SYSLOGHOST",
+        "pattern": "%{IPORHOST}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "213f5b8c-adf9-4f4a-a6f3-2928811dd216",
+      "data": {
+        "name": "SYSLOGPROG",
+        "pattern": "%{PROG:program}(?:\\[%{POSINT:pid}\\])?"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "34bbf96c-de99-4943-a03b-29a676f55839",
+      "data": {
+        "name": "SYSLOGTIMESTAMP",
+        "pattern": "%{MONTH} +%{MONTHDAY} %{TIME}"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "87cb2d77-dfd1-41cc-9384-dbda6535388e",
+      "data": {
+        "name": "SYSLOGFACILITY",
+        "pattern": "<%{NONNEGINT:facility}.%{NONNEGINT:priority}>"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "8a1c7229-c38b-4602-aaa7-04fd14d60704",
+      "data": {
+        "name": "HOUR",
+        "pattern": "(?:2[0123]|[01]?[0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "5397f1cc-a9a9-4eee-8d63-9874489c82fd",
+      "data": {
+        "name": "MINUTE",
+        "pattern": "(?:[0-5][0-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "cd1c9327-9b37-4ed6-90e6-252bebaa7a71",
+      "data": {
+        "name": "SECOND",
+        "pattern": "(?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "be0b29a9-eed0-4d20-b392-9ae5e9873a46",
+      "data": {
+        "name": "IPORHOST",
+        "pattern": "(?:%{IP}|%{HOSTNAME})"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "e8043088-6df4-42b1-8f3b-03b3e2ea0445",
+      "data": {
+        "name": "POSINT",
+        "pattern": "\\b(?:[1-9][0-9]*)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "9c32e8a8-2595-4889-b427-397d6dd431fd",
+      "data": {
+        "name": "PROG",
+        "pattern": "[\\x21-\\x5a\\x5c\\x5e-\\x7e]+"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "ecb652b6-51ba-4114-9a0d-a1c0ac1525c0",
+      "data": {
+        "name": "MONTH",
+        "pattern": "\\b(?:Jan(?:uary|uar)?|Feb(?:ruary|ruar)?|M(?:a|ä)?r(?:ch|z)?|Apr(?:il)?|Ma(?:y|i)?|Jun(?:e|i)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|O(?:c|k)?t(?:ober)?|Nov(?:ember)?|De(?:c|z)(?:ember)?)\\b"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "grok_pattern",
+        "version": "1"
+      },
+      "id": "406ff7f7-85b9-415e-b9a1-fc12ebf7e173",
+      "data": {
+        "name": "MONTHDAY",
+        "pattern": "(?:(?:0[1-9])|(?:[12][0-9])|(?:3[01])|[1-9])"
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
         "name": "lookup_adapter",
         "version": "1"
       },
@@ -3522,7 +4304,7 @@
         "name": "pipeline",
         "version": "1"
       },
-      "id": "9185313d-717b-435f-ba2c-f5bdb792aab5",
+      "id": "21c992b9-5052-4e49-bb0c-6e5b29801586",
       "data": {
         "title": {
           "@type": "string",
@@ -3534,12 +4316,46 @@
         },
         "source": {
           "@type": "string",
-          "@value": "pipeline \"Mailcow\"\nstage 0 match either\nrule \"mailcow_postfix\"\nrule \"mailcow_netfilter_grok\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nstage 1 match either\nrule \"mailcow_netfilter_details\"\nrule \"mailcow_postfix_ip_details\"\nend"
+          "@value": "pipeline \"Mailcow\"\nstage 0 match either\nrule \"mailcow_postfix\"\nrule \"mailcow_netfilter_grok\"\nrule \"mailcow_dovecot_grok\"\nstage 2 match either\nrule \"mailcow_netfilter_rule_details_1\"\nrule \"mailcow_netfilter_rule_details_2\"\nrule \"mailcow_netfilter_rule_details_3\"\nrule \"mailcow_netfilter_rule_details_4\"\nrule \"mailcow_netfilter_rule_details_5\"\nrule \"mailcow_netfilter_rule_details_7\"\nstage 1 match either\nrule \"mailcow_postfix_ip_details\"\nrule \"mailcow_netfilter_ip_details\"\nrule \"mailcow_dovecot_ip_details\"\nend"
         },
         "connected_streams": [
           {
             "@type": "string",
-            "@value": "a8e38c1e-2dc7-4c69-8b3b-f87d187a0c41"
+            "@value": "b20ef859-be0d-43f8-afe4-f4460e73e4d0"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "6316fd00-d5a0-4eb1-9dd5-99022c202eb8",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Dovecot"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Mailcow - Dovecot\"\nstage 1 match either\nrule \"mailcow_dovecot_ip_details\"\nstage 0 match either\nrule \"mailcow_dovecot_grok\"\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "e39110c5-2982-4f28-bc21-95b952f4b8ae"
           }
         ]
       },
@@ -3821,6 +4637,370 @@
         "source": {
           "@type": "string",
           "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n//  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\n  true\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_matched_rule = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  let parsed_field_banned = grok(pattern: \"Banning %{IP:netfilter_ip}/%{NUMBER} for %{NUMBER:netfilter_ban_time} minutes\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_matched_rule);\n  set_fields(parsed_field_banned);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "827cf3ec-bf1b-4e9f-8e1e-feb15ec52a0c",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_dovecot_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_dovecot_ip_details\"\nwhen\n  has_field(\"dovecot_rip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.dovecot_rip));\n  set_field(\"dovecot_rip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"dovecot_rip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"dovecot_rip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.dovecot_rip));\n  set_field(\"dovecot_rip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "2f8fd08c-6aab-441a-9ac8-8e6b2e83ec1b",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_dovecot_grok"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_dovecot_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_dovecot-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field = grok(pattern: \"%{DOVECOT}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "690155dc-668e-440e-bba1-4a4ea4c0371a",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_5"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_5\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 5\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid Mailcow UI credentials\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "ded1098f-fb5f-4cda-89dc-bcd65a32748f",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_grok"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n//  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\n  true\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_matched_rule = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  let parsed_field_banned = grok(pattern: \"Banning %{IP:netfilter_ip}/%{NUMBER} for %{NUMBER:netfilter_ban_time} minutes\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_matched_rule);\n  set_fields(parsed_field_banned);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "d9370427-c878-4a08-b9d7-42b3cc74e4b4",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_1"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_1\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 1\nthen\n  set_field(\"netfilter_rule_description\", \"SASL authentication failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "cf82961d-4088-44f2-a083-126b36f4f8a7",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_3"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_3\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 3\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP abort login\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "e7e91908-f30f-41d4-a6d1-2a08c6d15620",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_ip_details\"\nwhen\n  has_field(\"netfilter_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.netfilter_ip));\n  set_field(\"netfilter_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"netfilter_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"netfilter_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.netfilter_ip));\n  set_field(\"netfilter_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "a6a764c2-ea3e-4c2c-b883-e9761a8b32a5",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_postfix-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "2a3ee59b-b117-4adb-a583-048ee7d74ff9",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_dovecot_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_dovecot_ip_details\"\nwhen\n  has_field(\"dovecot_rip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.dovecot_rip));\n  set_field(\"dovecot_rip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"dovecot_rip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"dovecot_rip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.dovecot_rip));\n  set_field(\"dovecot_rip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "505894ef-9d91-4f2f-bf92-d1bdeec07902",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_7"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_7\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 7\nthen\n  set_field(\"netfilter_rule_description\", \"Rspamd UI: Invalid password\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "e7fd39a4-736b-451a-9fec-96b2ab626a9c",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_2"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_2\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 2\nthen\n  set_field(\"netfilter_rule_description\", \"SMTP auth failed\");\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "3b6c24cd-a032-419c-b02e-c4c138e85cba",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_postfix_ip_details"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_postfix_ip_details\"\nwhen\n  has_field(\"postfix_client_ip\")\nthen\n  let geo = lookup(\"geo-ip-city-maxmind-lookup\", to_string($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_geolocation\", geo[\"coordinates\"]);\n  set_field(\"postfix_client_ip_geo_country_code\", geo[\"country\"].iso_code);\n  set_field(\"postfix_client_ip_geo_country_name\", geo[\"country\"].names.en);\n\n  let whoice = lookup(\"ip-whoice\", to_ip($message.postfix_client_ip));\n  set_field(\"postfix_client_ip_organisation\", whoice.single_value);\n\nend"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline_rule",
+        "version": "1"
+      },
+      "id": "4116e05d-1413-45d0-aa00-51f92eeecf23",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "mailcow_netfilter_rule_details_4"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "rule \"mailcow_netfilter_rule_details_4\"\nwhen\n  has_field(\"netfilter_rule_id\") AND to_long($message.netfilter_rule_id) == 4\nthen\n  set_field(\"netfilter_rule_description\", \"Invalid SOGo login\");\nend"
         }
       },
       "constraints": [
@@ -4732,6 +5912,519 @@
         "description": {
           "@type": "string",
           "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "197808d0-216f-4973-bd67-254dd51cf163",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Netfilter"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_netfilter-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Netfilter"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "94045498-65b4-4162-af3b-aeb1221562b0",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Dovecot"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_dovecot-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Dovecot"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "7722d3f0-343f-438e-8620-998ee46c8de5",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Postfix"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_postfix-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Postfix"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "2f9924a1-4b36-41c6-9ae7-3c692fb347ac",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Rspamd"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_rspamd-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All log messages from mailcow rspamd"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "2b8ef5eb-30d1-4d07-b4ee-ffd5a38cd705",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_nginx-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": true
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "b20ef859-be0d-43f8-afe4-f4460e73e4d0",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "REGEX"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized.*"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_nginx-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": true
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "RAW mailcow logs"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.1.3+cda805f"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "e39110c5-2982-4f28-bc21-95b952f4b8ae",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Mailcow - Dovecot"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "EXACT"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "container_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "mailcowdockerized_dovecot-mailcow_1"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "All logs from Mailcow Dovecot"
         },
         "default_stream": {
           "@type": "boolean",
