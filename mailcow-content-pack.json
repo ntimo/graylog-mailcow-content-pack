@@ -2188,7 +2188,7 @@
       "id": "f2647393-867e-4399-bf77-10f309be44c3",
       "data": {
         "name": "DOVECOT_TIME",
-        "pattern": "%{WORD} %{NUMBER} %{TIME}"
+        "pattern": "%{WORD}%{SPACE}%{NUMBER} %{TIME}"
       },
       "constraints": [
         {
