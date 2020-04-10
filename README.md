@@ -10,7 +10,7 @@ A content pack for Graylog that creates magic mailcow insights.
 To install the content pack upload it to your Graylog at graylog.domain/system/contentpacks .
 
 # Content pack includes:
-- 3 Streams:
+- 5 Streams:
     - Mailcow
     - Mailcow - Postfix
     - Mailcow - Dovecot
@@ -21,9 +21,12 @@ To install the content pack upload it to your Graylog at graylog.domain/system/c
 - Pipelines:
     - Mailcow
     - Mailcow - Postfix
+    - Mailcow - Dovecot
     - Mailcow - Netfilter
 - Grok patterns:
     - Postfix
+    - Dovecot
+    - Netfilter
 
 # Screenshots
 
