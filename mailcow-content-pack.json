@@ -268,7 +268,7 @@
                 {
                   "query": {
                     "type": "elasticsearch",
-                    "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
+                    "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Anonymous TLS connection established from\""
                   },
                   "name": "chart",
                   "timerange": {
@@ -294,7 +294,7 @@
                 {
                   "query": {
                     "type": "elasticsearch",
-                    "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
+                    "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Anonymous TLS connection established from\""
                   },
                   "name": "trend",
                   "timerange": {
@@ -537,7 +537,7 @@
                 {
                   "query": {
                     "type": "elasticsearch",
-                    "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
+                    "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
                   },
                   "name": "chart",
                   "timerange": {
@@ -717,7 +717,7 @@
                 {
                   "query": {
                     "type": "elasticsearch",
-                    "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
+                    "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
                   },
                   "name": "trend",
                   "timerange": {
@@ -1066,7 +1066,7 @@
                 },
                 "query": {
                   "type": "elasticsearch",
-                  "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
+                  "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Recipient address rejected: Greylisting in effect, please come back later\""
                 },
                 "streams": [],
                 "config": {
@@ -1386,7 +1386,7 @@
                 },
                 "query": {
                   "type": "elasticsearch",
-                  "query_string": "container_name:mailcowdockerized_postfix-mailcow_1 && \"Anonymous TLS connection established from\""
+                  "query_string": "container_name:mailcowdockerized-postfix-mailcow-1 && \"Anonymous TLS connection established from\""
                 },
                 "streams": [],
                 "config": {
@@ -4672,7 +4672,7 @@
         },
         "source": {
           "@type": "string",
-          "@value": "rule \"mailcow_dovecot_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_dovecot-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_dovecot = grok(pattern: \"%{DOVECOT}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_dovecot);\nend"
+          "@value": "rule \"mailcow_dovecot_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized-dovecot-mailcow-1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_dovecot = grok(pattern: \"%{DOVECOT}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_dovecot);\nend"
         }
       },
       "constraints": [
@@ -4868,7 +4868,7 @@
         },
         "source": {
           "@type": "string",
-          "@value": "rule \"mailcow_postfix_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized_postfix-mailcow_1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  let parsed_field_postscreen = grok(pattern: \"%{POSTFIX_POSTSCREEN}\", value: original_message, only_named_captures: true);\n  let parsed_field_qmgr = grok(pattern: \"%{POSTFIX_QMGR}\", value: original_message, only_named_captures: true);\n  let parsed_field_bounce = grok(pattern: \"%{POSTFIX_BOUNCE}\", value: original_message, only_named_captures: true);\n  let parsed_field_scache = grok(pattern: \"%{POSTFIX_SCACHE}\", value: original_message, only_named_captures: true);\n  let parsed_field_postsuper = grok(pattern: \"%{POSTFIX_POSTSUPER}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\n  set_fields(parsed_field_postscreen);\n  set_fields(parsed_field_qmgr);\n  set_fields(parsed_field_bounce);\n  set_fields(parsed_field_scache);\n  set_fields(parsed_field_postsuper);\n\nend"
+          "@value": "rule \"mailcow_postfix_grok\"\nwhen\n  has_field(\"container_name\") AND contains(\"mailcowdockerized-postfix-mailcow-1\",to_string($message.container_name))\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_smtp = grok(pattern: \"%{POSTFIX_SMTP}\", value: original_message, only_named_captures: true);\n  let parsed_field_smtpd = grok(pattern: \"%{POSTFIX_SMTPD}\", value: original_message, only_named_captures: true);\n  let parsed_field_postscreen = grok(pattern: \"%{POSTFIX_POSTSCREEN}\", value: original_message, only_named_captures: true);\n  let parsed_field_qmgr = grok(pattern: \"%{POSTFIX_QMGR}\", value: original_message, only_named_captures: true);\n  let parsed_field_bounce = grok(pattern: \"%{POSTFIX_BOUNCE}\", value: original_message, only_named_captures: true);\n  let parsed_field_scache = grok(pattern: \"%{POSTFIX_SCACHE}\", value: original_message, only_named_captures: true);\n  let parsed_field_postsuper = grok(pattern: \"%{POSTFIX_POSTSUPER}\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_smtp);\n  set_fields(parsed_field_smtpd);\n  set_fields(parsed_field_postscreen);\n  set_fields(parsed_field_qmgr);\n  set_fields(parsed_field_bounce);\n  set_fields(parsed_field_scache);\n  set_fields(parsed_field_postsuper);\n\nend"
         }
       },
       "constraints": [
@@ -4896,7 +4896,7 @@
         },
         "source": {
           "@type": "string",
-          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n//  has_field(\"container_name\") AND contains(\"mailcowdockerized_netfilter-mailcow_1\",to_string($message.container_name))\n  true\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_matched_rule = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  let parsed_field_banned = grok(pattern: \"Banning %{IP:netfilter_ip}/%{NUMBER} for %{NUMBER:netfilter_ban_time} minutes\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_matched_rule);\n  set_fields(parsed_field_banned);\nend"
+          "@value": "rule \"mailcow_netfilter_grok\"\nwhen\n//  has_field(\"container_name\") AND contains(\"mailcowdockerized-netfilter-mailcow-1\",to_string($message.container_name))\n  true\nthen\n  let original_message = to_string($message.message);\n  let parsed_field_matched_rule = grok(pattern: \"%{IP:netfilter_ip} matched rule id %{NUMBER:netfilter_rule_id}\", value: original_message, only_named_captures: true);\n  let parsed_field_banned = grok(pattern: \"Banning %{IP:netfilter_ip}/%{NUMBER} for %{NUMBER:netfilter_ban_time} minutes\", value: original_message, only_named_captures: true);\n  set_fields(parsed_field_matched_rule);\n  set_fields(parsed_field_banned);\nend"
         }
       },
       "constraints": [
@@ -5048,7 +5048,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_mysql-mailcow_1"
+              "@value": "mailcowdockerized-mysql-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5137,7 +5137,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_nginx-mailcow_1"
+              "@value": "mailcowdockerized-nginx-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5204,7 +5204,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_dovecot-mailcow_1"
+              "@value": "mailcowdockerized-dovecot-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5271,7 +5271,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_rspamd-mailcow_1"
+              "@value": "mailcowdockerized-rspamd-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5338,7 +5338,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_postfix-mailcow_1"
+              "@value": "mailcowdockerized-postfix-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5405,7 +5405,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_netfilter-mailcow_1"
+              "@value": "mailcowdockerized-netfilter-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5539,7 +5539,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_dovecot-mailcow_1"
+              "@value": "mailcowdockerized-dovecot-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5606,7 +5606,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_postfix-mailcow_1"
+              "@value": "mailcowdockerized-postfix-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5695,7 +5695,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_nginx-mailcow_1"
+              "@value": "mailcowdockerized-nginx-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5762,7 +5762,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_netfilter-mailcow_1"
+              "@value": "mailcowdockerized-netfilter-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
@@ -5829,7 +5829,7 @@
             },
             "value": {
               "@type": "string",
-              "@value": "mailcowdockerized_rspamd-mailcow_1"
+              "@value": "mailcowdockerized-rspamd-mailcow-1"
             },
             "inverted": {
               "@type": "boolean",
